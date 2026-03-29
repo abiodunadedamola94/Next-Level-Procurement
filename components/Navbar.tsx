@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-const WHATSAPP_LINK = "https://wa.me/1234567890";
+const WHATSAPP_LINK = "https://wa.me/447346485225";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -45,7 +45,7 @@ const Navbar = () => {
           onClick={(e) => { e.preventDefault(); handleClick("#home"); }}
           className="flex items-center"
         >
-          <Image loading="eager" src={'/logo.jpg'} alt="Next Level Procurement" width={400} height={48} className="h-10 md:h-12 w-auto" />
+          <Image loading="eager" src={'/logo.png'} alt="Next Level Procurement" width={277} height={28} className="h-10 md:h-12 w-60 object-contain" />
         </Link>
 
         {/* Desktop nav */}

@@ -3,7 +3,8 @@
 import { MessageCircle } from "lucide-react";
 import { useScrollAnimation } from "./useScrollAnimation";
 
-const WHATSAPP_LINK = "https://wa.me/1234567890";
+const WHATSAPP_LINK = "https://wa.me/447346485225";
+
 
 const CTASection = () => {
   const { ref, isVisible } = useScrollAnimation();

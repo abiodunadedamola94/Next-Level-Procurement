@@ -4,7 +4,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Package, MapPin, Users } from "lucide-react";
 
-const WHATSAPP_LINK = "https://wa.me/1234567890";
+const WHATSAPP_LINK = "https://wa.me/447346485225";
 
 const trustItems = [
   { icon: Package, label: "End-to-End Procurement" },

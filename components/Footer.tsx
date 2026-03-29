@@ -3,7 +3,7 @@
 import { MessageCircle } from "lucide-react";
 import Image from "next/image";
 
-const WHATSAPP_LINK = "https://wa.me/1234567890";
+const WHATSAPP_LINK = "https://wa.me/447346485225";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -24,7 +24,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <Image src={'/logo.jpg'} alt="Next Level Procurement" width={200} height={48} className="h-12 w-auto mb-3" style={{ width: "auto" }} />
+            <Image src={'/footerLogo.png'} alt="Next Level Procurement" width={200} height={48} className="h-28 w-32 mb-3" style={{ width: "auto" }} />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Elevate your procurement process to the next Level.
             </p>

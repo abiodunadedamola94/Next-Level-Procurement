@@ -33,7 +33,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="font-heading font-semibold text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">
-              Quick Links
+              Quick Link
             </h4>
             <ul className="space-y-2">
               {links.map((l) => (

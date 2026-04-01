@@ -6,7 +6,7 @@ import { useScrollAnimation } from "./useScrollAnimation";
 const highlights = [
   {
     icon: DollarSign,
-    title: "Cost Optimization",
+    title: "Sourcing, Purchasing & Cost Savings",
     desc: "Strategic sourcing and negotiation to maximize value and reduce procurement costs.",
   },
   {
@@ -43,7 +43,7 @@ const AboutSection = () => {
             About NextLevel Procurement
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-6">
-            NextLevel Procurement is a strategic sourcing and supply chain partner delivering structured, transparent, and cost-effective procurement solutions.
+            Next Level Procurement is your strategic sourcing and supply chain partner, delivering structured and reliable procurement solutions. We act as your dedicated buying team at minimal cost, helping you save time and money while ensuring quality service, so you can focus on running your business
           </p>
           <div className="text-muted-foreground max-w-2xl mx-auto leading-relaxed text-left space-y-2 mb-6">
             <p className="font-semibold text-foreground">We support businesses with:</p>

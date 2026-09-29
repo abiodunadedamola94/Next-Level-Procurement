@@ -1,0 +1,9 @@
+{
+  "framework": null,
+  "installCommand": "echo no-install",
+  "buildCommand": "echo static-site",
+  "outputDirectory": ".",
+  "headers": [
+    { "source": "/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }
+  ]
+}

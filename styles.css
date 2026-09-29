@@ -78,7 +78,7 @@ p { margin: 0; }
 .tracker { background: var(--ink-2); border: 1px solid var(--ink-line); border-radius: var(--radius-lg); padding: 26px; box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .8); }
 .tracker-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
 .tracker-top .mono { color: var(--muted-dark); }
-.tracker h3 { font-size: 21px; font-weight: 600; margin-top: 8px; letter-spacing: -.015em; }
+.tracker .tracker-title { margin: 8px 0 0; font-size: 21px; font-weight: 600; line-height: 1.3; letter-spacing: -.015em; }
 .tag { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); background: var(--gold); border-radius: 999px; padding: 5px 10px; white-space: nowrap; }
 .route { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; margin: 24px 0 8px; font-size: 14.5px; }
 .route .end { display: grid; gap: 2px; }

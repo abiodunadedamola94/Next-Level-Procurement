@@ -9,7 +9,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useScrollAnimation } from "./useScrollAnimation";
-import { QUOTE_LINK, STARTERKIT_LINK, waLink } from "@/lib/site";
+import Link from "next/link";
 
 // The three areas Next Level Procurement serves, in Dorcas's words (6 Nov 2026),
 // plus the Made in China StarterKit. Sub-items come from the previous services list.
@@ -35,7 +35,7 @@ const services: Service[] = [
       "Freight forwarding (road, sea, air)",
       "Delivery coordination",
     ],
-    cta: { label: "Request a quote", href: QUOTE_LINK },
+    cta: { label: "See how it works", href: "/services/purchasing-and-sourcing" },
   },
   {
     icon: ShoppingBag,
@@ -46,10 +46,7 @@ const services: Service[] = [
       "We buy from UK stores for you",
       "We send it to your country",
     ],
-    cta: {
-      label: "Ask about personal shopping",
-      href: waLink("Hello, I'd like to buy from the UK and have it sent to me. I need: "),
-    },
+    cta: { label: "See how it works", href: "/services/uk-personal-shopping" },
   },
   {
     icon: PackageCheck,
@@ -61,10 +58,7 @@ const services: Service[] = [
       "Disposable gloves",
       "Disposable napkins",
     ],
-    cta: {
-      label: "Order consumables",
-      href: waLink("Hello, I'd like to order consumables. I need: "),
-    },
+    cta: { label: "See how it works", href: "/services/consumables-supply" },
   },
   {
     icon: GraduationCap,
@@ -74,7 +68,7 @@ const services: Service[] = [
       "Learn how importing from China works",
       "For anyone starting to import",
     ],
-    cta: { label: "Get the StarterKit ($20)", href: STARTERKIT_LINK },
+    cta: { label: "About the StarterKit ($20)", href: "/starter-kit" },
   },
 ];
 
@@ -132,14 +126,12 @@ const ServicesSection = () => {
                   </li>
                 ))}
               </ul>
-              <a
+              <Link
                 href={cta.href}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="mt-auto pt-6 inline-flex items-center gap-2 text-teal hover:text-teal-light font-semibold text-sm transition-colors"
               >
                 {cta.label} <ArrowRight size={16} />
-              </a>
+              </Link>
             </div>
           ))}
         </div>

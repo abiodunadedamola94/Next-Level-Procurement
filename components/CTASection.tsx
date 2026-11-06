@@ -3,7 +3,7 @@
 import { MessageCircle } from "lucide-react";
 import { useScrollAnimation } from "./useScrollAnimation";
 
-import { WHATSAPP_LINK, QUOTE_LINK } from "@/lib/site";
+import { WHATSAPP_LINK } from "@/lib/site";
 
 
 const CTASection = () => {
@@ -41,9 +41,7 @@ const CTASection = () => {
             Chat With Us on WhatsApp
           </a>
           <a
-            href={QUOTE_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/quote"
             className="inline-flex items-center justify-center gap-2 border border-border text-foreground hover:border-teal/50 hover:text-teal font-semibold px-8 py-4 rounded-lg transition-all bg-secondary/30"
           >
             Request a Quote

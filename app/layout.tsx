@@ -3,6 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { SITE_URL, SITE_NAME, MOTTO, PHONE_TEL, EMAIL } from "@/lib/site";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
+import { allPosts } from "@/lib/blog";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,10 +24,9 @@ const DESCRIPTION =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: TITLE,
+  title: { default: TITLE, template: "%s" },
   description: DESCRIPTION,
   applicationName: SITE_NAME,
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: SITE_URL,
@@ -80,11 +83,16 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
-        {children}
+        <JsonLd data={organizationJsonLd} />
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-lg"
+        >
+          Skip to content
+        </a>
+        <Navbar showBlog={allPosts().length > 0} />
+        <main id="main" className="flex-1">{children}</main>
+        <Footer />
         <Analytics />
       </body>
     </html>

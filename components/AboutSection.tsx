@@ -40,7 +40,7 @@ const AboutSection = () => {
             About Us
           </p>
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-6">
-            About NextLevel Procurement
+            About Next Level Procurement
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-6">
             Next Level Procurement is your strategic sourcing and supply chain partner, delivering structured and reliable procurement solutions. We act as your dedicated buying team at minimal cost, helping you save time and money while ensuring quality service, so you can focus on running your business

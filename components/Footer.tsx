@@ -3,7 +3,7 @@
 import { MessageCircle } from "lucide-react";
 import Image from "next/image";
 
-const WHATSAPP_LINK = "https://wa.me/447346485225";
+import { WHATSAPP_LINK, PHONE_DISPLAY, PHONE_TEL, EMAIL, MOTTO } from "@/lib/site";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -26,7 +26,7 @@ const Footer = () => {
           <div>
             <Image src={'/footerLogo.png'} alt="Next Level Procurement" width={200} height={48} className="h-28 w-32 mb-3" style={{ width: "auto" }} />
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Elevate your procurement process to the next Level.
+              {MOTTO}
             </p>
           </div>
 
@@ -64,6 +64,18 @@ const Footer = () => {
               <MessageCircle size={16} />
               Chat on WhatsApp
             </a>
+            <ul className="mt-4 space-y-2 text-sm">
+              <li>
+                <a href={`tel:${PHONE_TEL}`} className="text-muted-foreground hover:text-teal transition-colors">
+                  {PHONE_DISPLAY}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${EMAIL}`} className="text-muted-foreground hover:text-teal transition-colors break-all">
+                  {EMAIL}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 

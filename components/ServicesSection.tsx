@@ -1,52 +1,80 @@
 "use client";
 
 import {
-  ShoppingCart,
-  Plane,
+  Globe,
+  ShoppingBag,
   PackageCheck,
-  BarChart3,
+  GraduationCap,
+  ArrowRight,
+  type LucideIcon,
 } from "lucide-react";
 import { useScrollAnimation } from "./useScrollAnimation";
+import { QUOTE_LINK, STARTERKIT_LINK, waLink } from "@/lib/site";
 
-const services = [
+// The three areas Next Level Procurement serves, in Dorcas's words (6 Nov 2026),
+// plus the Made in China StarterKit. Sub-items come from the previous services list.
+type Service = {
+  icon: LucideIcon;
+  title: string;
+  summary: string;
+  items: string[];
+  cta: { label: string; href: string };
+};
+
+const services: Service[] = [
   {
-    icon: ShoppingCart,
-    title: "Procurement Services",
+    icon: Globe,
+    title: "Purchasing and Sourcing",
+    summary:
+      "From anywhere in the world to anywhere, including importation from China.",
     items: [
       "Product sourcing",
       "Supplier negotiation",
-      "Contract management",
-      "Cost optimization",
       "Quality inspection",
-      "Importation (China and EU countries)",
-    ],
-  },
-  {
-    icon: Plane,
-    title: "Logistics Services",
-    items: [
+      "Importation from China",
       "Freight forwarding (road, sea, air)",
-      "Local distribution",
       "Delivery coordination",
     ],
+    cta: { label: "Request a quote", href: QUOTE_LINK },
+  },
+  {
+    icon: ShoppingBag,
+    title: "Personal Shopping from the UK",
+    summary:
+      "For clients abroad who want to buy from the UK and have it sent to their country.",
+    items: [
+      "We buy from UK stores for you",
+      "We send it to your country",
+    ],
+    cta: {
+      label: "Ask about personal shopping",
+      href: waLink("Hello, I'd like to buy from the UK and have it sent to me. I need: "),
+    },
   },
   {
     icon: PackageCheck,
-    title: "Procure + Deliver Packages",
+    title: "Consumables Supply",
+    summary: "Basic consumables for businesses and individuals.",
     items: [
-      "Source → Manage → Ship → Deliver",
-      "Single accountability partner",
-      "Seamless end-to-end execution",
+      "Bin bags",
+      "Microfibre cloths",
+      "Disposable gloves",
+      "Disposable napkins",
     ],
+    cta: {
+      label: "Order consumables",
+      href: waLink("Hello, I'd like to order consumables. I need: "),
+    },
   },
   {
-    icon: BarChart3,
-    title: "Value-Added Services",
+    icon: GraduationCap,
+    title: "Made in China StarterKit",
+    summary: "Training on how to import from China. $20.",
     items: [
-      "Real-time supply tracking",
-      "Vendor performance reporting",
-      "Cost benchmarking",
+      "Learn how importing from China works",
+      "For anyone starting to import",
     ],
+    cta: { label: "Get the StarterKit ($20)", href: STARTERKIT_LINK },
   },
 ];
 
@@ -71,16 +99,16 @@ const ServicesSection = () => {
             Our Services
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Comprehensive procurement and logistics solutions tailored for
-            businesses that demand efficiency, transparency, and results.
+            Three ways we buy for you, for businesses and individuals, plus
+            training if you want to import from China yourself.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {services.map(({ icon: Icon, title, items }) => (
+          {services.map(({ icon: Icon, title, summary, items, cta }) => (
             <div
               key={title}
-              className="p-8 rounded-xl bg-card border border-border hover:border-teal/20 transition-all duration-300 group"
+              className="p-8 rounded-xl bg-card border border-border hover:border-teal/20 transition-all duration-300 group flex flex-col"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center group-hover:bg-teal/15 transition-colors">
@@ -90,6 +118,9 @@ const ServicesSection = () => {
                   {title}
                 </h3>
               </div>
+              <p className="text-foreground/90 text-sm leading-relaxed mb-5">
+                {summary}
+              </p>
               <ul className="space-y-3">
                 {items.map((item) => (
                   <li
@@ -101,6 +132,14 @@ const ServicesSection = () => {
                   </li>
                 ))}
               </ul>
+              <a
+                href={cta.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto pt-6 inline-flex items-center gap-2 text-teal hover:text-teal-light font-semibold text-sm transition-colors"
+              >
+                {cta.label} <ArrowRight size={16} />
+              </a>
             </div>
           ))}
         </div>

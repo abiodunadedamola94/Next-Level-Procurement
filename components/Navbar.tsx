@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-const WHATSAPP_LINK = "https://wa.me/447346485225";
+import { WHATSAPP_LINK } from "@/lib/site";
 
 const navLinks = [
   { label: "Home", href: "#home" },

@@ -4,7 +4,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Package, MapPin, Users } from "lucide-react";
 
-const WHATSAPP_LINK = "https://wa.me/447346485225";
+import { WHATSAPP_LINK, QUOTE_LINK } from "@/lib/site";
 
 const trustItems = [
   { icon: Package, label: "End-to-End Procurement" },
@@ -81,12 +81,12 @@ const HeroSection = () => (
             Get Started <ArrowRight size={18} />
           </a>
           <a
-            href={WHATSAPP_LINK}
+            href={QUOTE_LINK}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 border border-border text-foreground hover:border-teal/50 hover:text-teal font-semibold px-8 py-3.5 rounded-lg transition-all bg-secondary/30"
           >
-            Join Our Waitlist
+            Request a Quote
           </a>
         </motion.div>
       </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MessageCircle, Phone, Mail } from "lucide-react";
 
 import PageHeader from "@/components/PageHeader";
 import QuoteForm from "@/components/QuoteForm";
@@ -11,32 +12,55 @@ export const metadata: Metadata = {
   alternates: { canonical: "/quote" },
 };
 
+const next = [
+  "You send the message on WhatsApp.",
+  "We ask anything we need to know.",
+  "We send you a quote.",
+];
+
 export default function QuotePage() {
   return (
     <>
       <PageHeader
         eyebrow="Request a quote"
         title="Tell us what you need"
-        lead="A few short questions. Your answers open in WhatsApp, ready to send to us."
+        lead="Three short groups of questions. Your answers open in WhatsApp, ready to send to us."
         crumbs={[{ label: "Home", href: "/" }, { label: "Request a quote" }]}
       />
-      <section className="section-padding pt-12! md:pt-16!">
-        <div className="container mx-auto max-w-5xl grid lg:grid-cols-[1.5fr_1fr] gap-10">
+      <section className="py-[clamp(48px,6vw,96px)]">
+        <div className="wrap grid lg:grid-cols-[1.55fr_1fr] gap-8 lg:gap-12 items-start">
           <QuoteForm />
-          <aside className="space-y-6">
-            <div className="p-6 rounded-xl border border-border bg-card">
-              <h2 className="font-heading font-semibold text-foreground mb-3">What happens next</h2>
-              <ol className="space-y-3 text-sm text-muted-foreground list-decimal list-inside">
-                <li>You send the message on WhatsApp.</li>
-                <li>We ask anything we need to know.</li>
-                <li>We send you a quote.</li>
+          <aside className="space-y-4 lg:sticky lg:top-28">
+            <div className="rounded-[22px] bg-ink text-white p-7">
+              <h2 className="mono-label text-teal">What happens next</h2>
+              <ol className="mt-5">
+                {next.map((n, i) => (
+                  <li key={n} className="grid grid-cols-[36px_1fr] gap-3 py-3.5 border-t first:border-t-0 border-ink-line">
+                    <span className="mono-label !text-[11px] text-muted-dark pt-1">0{i + 1}</span>
+                    <span>{n}</span>
+                  </li>
+                ))}
               </ol>
             </div>
-            <div className="p-6 rounded-xl border border-border bg-card text-sm space-y-2">
-              <h2 className="font-heading font-semibold text-foreground mb-3">Other ways to reach us</h2>
-              <p><a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="text-teal hover:text-teal-light">WhatsApp {PHONE_DISPLAY}</a></p>
-              <p><a href={`tel:${PHONE_TEL}`} className="text-muted-foreground hover:text-teal">Call {PHONE_DISPLAY}</a></p>
-              <p><a href={`mailto:${EMAIL}`} className="text-muted-foreground hover:text-teal break-all">{EMAIL}</a></p>
+            <div className="rounded-[22px] bg-white border border-line p-7">
+              <h2 className="mono-label text-muted">Other ways to reach us</h2>
+              <ul className="mt-4 text-[15.5px]">
+                <li>
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 py-3 font-semibold text-teal-text hover:text-text">
+                    <MessageCircle size={18} aria-hidden="true" /> WhatsApp {PHONE_DISPLAY}
+                  </a>
+                </li>
+                <li className="border-t border-line">
+                  <a href={`tel:${PHONE_TEL}`} className="flex items-center gap-3 py-3 hover:text-teal-text">
+                    <Phone size={18} aria-hidden="true" /> Call {PHONE_DISPLAY}
+                  </a>
+                </li>
+                <li className="border-t border-line">
+                  <a href={`mailto:${EMAIL}`} className="flex items-center gap-3 py-3 hover:text-teal-text break-all">
+                    <Mail size={18} aria-hidden="true" className="shrink-0" /> {EMAIL}
+                  </a>
+                </li>
+              </ul>
             </div>
           </aside>
         </div>

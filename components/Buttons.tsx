@@ -1,28 +1,58 @@
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 
-const primary =
-  "inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold px-7 py-3.5 rounded-lg transition-all hover:shadow-lg hover:shadow-teal/20 glow-teal";
-const secondary =
-  "inline-flex items-center justify-center gap-2 border border-border text-foreground hover:border-teal/50 hover:text-teal font-semibold px-7 py-3.5 rounded-lg transition-all bg-secondary/30";
+// Pill buttons. `tone` says what the button sits on:
+// ink   -> teal primary (7.7:1 with ink text), ghost with a light border
+// paper -> ink primary, ghost with a line border (teal fill is kept for ink)
+type Tone = "ink" | "paper";
 
-export function PrimaryLink({ href, children }: { href: string; children: React.ReactNode }) {
-  const external = href.startsWith("http");
-  return external ? (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={primary}>
-      {children} <ArrowRight size={18} />
+const styles = {
+  primary: {
+    ink: "btn bg-teal text-ink hover:bg-teal-hover",
+    paper: "btn bg-ink text-white hover:bg-ink-3",
+  },
+  ghost: {
+    ink: "btn border-[#3a3e48] text-white hover:border-teal",
+    paper: "btn border-line bg-white text-text hover:border-text",
+  },
+};
+
+function Anchor({ href, className, children }: { href: string; className: string; children: React.ReactNode }) {
+  return href.startsWith("http") ? (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+      {children}
     </a>
   ) : (
-    <Link href={href} className={primary}>
-      {children} <ArrowRight size={18} />
+    <Link href={href} className={className}>
+      {children}
     </Link>
   );
 }
 
-export function WhatsAppLink({ href, children }: { href: string; children: React.ReactNode }) {
+type Props = { href: string; children: React.ReactNode; tone?: Tone; className?: string };
+
+export function PrimaryLink({ href, children, tone = "ink", className = "" }: Props) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={secondary}>
-      <MessageCircle size={18} /> {children}
-    </a>
+    <Anchor href={href} className={`${styles.primary[tone]} group ${className}`}>
+      {children}
+      <ArrowRight size={18} aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5" />
+    </Anchor>
+  );
+}
+
+export function WhatsAppLink({ href, children, tone = "ink", className = "" }: Props) {
+  return (
+    <Anchor href={href} className={`${styles.ghost[tone]} ${className}`}>
+      <MessageCircle size={18} aria-hidden="true" />
+      {children}
+    </Anchor>
+  );
+}
+
+export function GhostLink({ href, children, tone = "ink", className = "" }: Props) {
+  return (
+    <Anchor href={href} className={`${styles.ghost[tone]} ${className}`}>
+      {children}
+    </Anchor>
   );
 }

@@ -6,6 +6,7 @@ import { SITE_URL, SITE_NAME, MOTTO, PHONE_TEL, EMAIL } from "@/lib/site";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import SmoothScroll from "@/components/SmoothScroll";
 import { allPosts } from "@/lib/blog";
 
 const geistSans = Geist({
@@ -86,10 +87,11 @@ export default function RootLayout({
         <JsonLd data={organizationJsonLd} />
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-lg"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 focus:bg-teal focus:text-ink focus:px-4 focus:py-2 focus:rounded-full"
         >
           Skip to content
         </a>
+        <SmoothScroll />
         <Navbar showBlog={allPosts().length > 0} />
         <main id="main" className="flex-1">{children}</main>
         <Footer />

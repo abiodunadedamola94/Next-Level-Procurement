@@ -21,8 +21,23 @@ const empty: Fields = { service: "", what: "", quantity: "", from: "", to: "", b
 const sources = ["UK", "China", "Europe", "Turkey", "Africa", "Not sure"];
 
 const input =
-  "w-full rounded-lg bg-background border border-border px-4 py-3 text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/30 min-h-12";
-const label = "block text-sm font-medium text-foreground mb-2";
+  "w-full rounded-xl bg-white border border-line px-4 text-[16px] text-text placeholder:text-[#6b7380] min-h-[52px] transition-[border-color,box-shadow] focus:outline-none focus:border-text focus:ring-4 focus:ring-teal/25 aria-[invalid=true]:border-[#b42318]";
+const label = "block text-[15px] font-semibold text-text mb-2";
+const optional = <span className="font-normal text-muted"> (optional)</span>;
+
+function Group({ n, title, children }: { n: string; title: string; children: React.ReactNode }) {
+  return (
+    <div className="group-sep border-t border-line pt-7 first:border-t-0 first:pt-0">
+      <fieldset className="border-0 p-0 m-0 min-w-0">
+        <legend className="mono-label text-muted mb-5 flex gap-3 p-0">
+          <span className="text-teal-text">{n}</span>
+          {title}
+        </legend>
+        <div className="space-y-5">{children}</div>
+      </fieldset>
+    </div>
+  );
+}
 
 export default function QuoteForm() {
   const [f, setF] = useState<Fields>(empty);
@@ -60,82 +75,87 @@ export default function QuoteForm() {
 
   const err = (k: keyof Fields) =>
     errors[k] ? (
-      <p id={`q-${k}-err`} className="mt-2 text-sm text-red-300" role="alert">
+      <p id={`q-${k}-err`} className="mt-2 text-[14px] font-medium text-[#b42318]" role="alert">
         {errors[k]}
       </p>
     ) : null;
 
   return (
-    <form onSubmit={submit} noValidate className="p-6 md:p-8 rounded-xl bg-card border border-border space-y-5">
-      <div>
-        <label htmlFor="q-service" className={label}>Service</label>
-        <select id="q-service" value={f.service} onChange={set("service")} className={input}>
-          <option value="">Choose one (optional)</option>
-          {services.map((s) => (
-            <option key={s.slug} value={s.title}>{s.title}</option>
-          ))}
-        </select>
-      </div>
-
-      <div>
-        <label htmlFor="q-what" className={label}>What do you need?</label>
-        <input id="q-what" value={f.what} onChange={set("what")} className={input} placeholder="e.g. disposable gloves, phone accessories" aria-invalid={!!errors.what} aria-describedby={errors.what ? "q-what-err" : undefined} />
-        {err("what")}
-      </div>
-
-      <div className="grid sm:grid-cols-2 gap-5">
+    <form onSubmit={submit} noValidate className="rounded-[22px] bg-white border border-line p-6 md:p-10 space-y-7">
+      <Group n="01" title="What you need">
         <div>
-          <label htmlFor="q-quantity" className={label}>How many? <span className="text-muted-foreground font-normal">(optional)</span></label>
-          <input id="q-quantity" value={f.quantity} onChange={set("quantity")} className={input} placeholder="e.g. 200 cartons" />
-        </div>
-        <div>
-          <label htmlFor="q-from" className={label}>Buying from <span className="text-muted-foreground font-normal">(optional)</span></label>
-          <select id="q-from" value={f.from} onChange={set("from")} className={input}>
+          <label htmlFor="q-service" className={label}>Service{optional}</label>
+          <select id="q-service" value={f.service} onChange={set("service")} className={input}>
             <option value="">Choose one</option>
-            {sources.map((s) => (
-              <option key={s} value={s}>{s}</option>
+            {services.map((s) => (
+              <option key={s.slug} value={s.title}>{s.title}</option>
             ))}
           </select>
         </div>
+        <div>
+          <label htmlFor="q-what" className={label}>What do you need?</label>
+          <input id="q-what" value={f.what} onChange={set("what")} className={input} placeholder="e.g. disposable gloves, phone accessories" aria-invalid={!!errors.what} aria-describedby={errors.what ? "q-what-err" : undefined} />
+          {err("what")}
+        </div>
+        <div className="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label htmlFor="q-quantity" className={label}>How many?{optional}</label>
+            <input id="q-quantity" value={f.quantity} onChange={set("quantity")} className={input} placeholder="e.g. 200 cartons" />
+          </div>
+          <div>
+            <label htmlFor="q-from" className={label}>Buying from{optional}</label>
+            <select id="q-from" value={f.from} onChange={set("from")} className={input}>
+              <option value="">Choose one</option>
+              {sources.map((s) => (
+                <option key={s} value={s}>{s}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </Group>
+
+      <Group n="02" title="Where it goes">
+        <div className="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label htmlFor="q-to" className={label}>Deliver to</label>
+            <input id="q-to" value={f.to} onChange={set("to")} className={input} placeholder="City and country" autoComplete="address-level2" aria-invalid={!!errors.to} aria-describedby={errors.to ? "q-to-err" : undefined} />
+            {err("to")}
+          </div>
+          <div>
+            <label htmlFor="q-by" className={label}>Needed by{optional}</label>
+            <input id="q-by" type="date" value={f.by} onChange={set("by")} className={input} />
+          </div>
+        </div>
+      </Group>
+
+      <Group n="03" title="Who you are">
+        <div className="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label htmlFor="q-name" className={label}>Your name</label>
+            <input id="q-name" value={f.name} onChange={set("name")} className={input} autoComplete="name" aria-invalid={!!errors.name} aria-describedby={errors.name ? "q-name-err" : undefined} />
+            {err("name")}
+          </div>
+          <div>
+            <label htmlFor="q-phone" className={label}>WhatsApp number{optional}</label>
+            <input id="q-phone" type="tel" value={f.phone} onChange={set("phone")} className={input} autoComplete="tel" inputMode="tel" />
+          </div>
+        </div>
+      </Group>
+
+      <div className="pt-2">
+        <button type="submit" className="btn w-full bg-ink text-white hover:bg-ink-3 min-h-14 text-[17px]">
+          <MessageCircle size={19} aria-hidden="true" /> Send on WhatsApp
+        </button>
+        <p className="mt-4 text-[14.5px] text-muted" aria-live="polite">
+          {sent
+            ? "WhatsApp should now be open with your request written out. Press send there and we'll reply."
+            : "This opens WhatsApp with your answers written out. Nothing is stored on this website."}{" "}
+          Prefer email?{" "}
+          <a href={`mailto:${EMAIL}`} className="text-teal-text underline underline-offset-4 hover:text-text">
+            {EMAIL}
+          </a>
+        </p>
       </div>
-
-      <div className="grid sm:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor="q-to" className={label}>Deliver to</label>
-          <input id="q-to" value={f.to} onChange={set("to")} className={input} placeholder="City and country" autoComplete="address-level2" aria-invalid={!!errors.to} aria-describedby={errors.to ? "q-to-err" : undefined} />
-          {err("to")}
-        </div>
-        <div>
-          <label htmlFor="q-by" className={label}>Needed by <span className="text-muted-foreground font-normal">(optional)</span></label>
-          <input id="q-by" type="date" value={f.by} onChange={set("by")} className={input} />
-        </div>
-      </div>
-
-      <div className="grid sm:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor="q-name" className={label}>Your name</label>
-          <input id="q-name" value={f.name} onChange={set("name")} className={input} autoComplete="name" aria-invalid={!!errors.name} aria-describedby={errors.name ? "q-name-err" : undefined} />
-          {err("name")}
-        </div>
-        <div>
-          <label htmlFor="q-phone" className={label}>WhatsApp number <span className="text-muted-foreground font-normal">(optional)</span></label>
-          <input id="q-phone" type="tel" value={f.phone} onChange={set("phone")} className={input} autoComplete="tel" inputMode="tel" />
-        </div>
-      </div>
-
-      <button
-        type="submit"
-        className="w-full inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold px-7 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-teal/20 glow-teal"
-      >
-        <MessageCircle size={18} /> Send on WhatsApp
-      </button>
-
-      <p className="text-sm text-muted-foreground" aria-live="polite">
-        {sent
-          ? "WhatsApp should now be open with your request written out. Press send there and we'll reply."
-          : "This opens WhatsApp with your answers written out. Nothing is stored on this website."}{" "}
-        Prefer email? <a href={`mailto:${EMAIL}`} className="text-teal hover:text-teal-light">{EMAIL}</a>
-      </p>
     </form>
   );
 }

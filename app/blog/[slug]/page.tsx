@@ -57,25 +57,41 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         lead={p.summary}
         crumbs={[{ label: "Home", href: "/" }, { label: "Blog", href: "/blog" }, { label: p.title }]}
       />
-      <article className="section-padding">
-        <div
-          className="prose-nlp container mx-auto max-w-[68ch]"
-          dangerouslySetInnerHTML={{ __html: p.html }}
-        />
-        {service && (
-          <div className="container mx-auto max-w-[68ch] mt-12">
-            <Link
-              href={`/services/${service.slug}`}
-              className="flex items-center justify-between gap-4 p-6 rounded-xl bg-teal/5 border border-teal/20 hover:border-teal/40 transition-colors"
-            >
-              <span>
-                <span className="block text-xs uppercase tracking-[0.2em] text-muted-foreground mb-1">Related service</span>
-                <span className="font-heading font-semibold text-foreground">{service.title}</span>
-              </span>
-              <ArrowRight size={18} className="text-teal shrink-0" />
-            </Link>
+      <article className="section">
+        <div className="wrap grid lg:grid-cols-[200px_minmax(0,68ch)] gap-10 lg:gap-16 justify-center">
+          <aside className="hidden lg:block">
+            <div className="sticky top-32 space-y-6">
+              <div>
+                <p className="mono-label text-muted">Published</p>
+                <p className="mt-1 font-medium">{formatDate(p.date)}</p>
+              </div>
+              {service && (
+                <div>
+                  <p className="mono-label text-muted">Service</p>
+                  <Link href={`/services/${service.slug}`} className="mt-1 inline-block font-medium text-teal-text underline underline-offset-4 hover:text-text">
+                    {service.title}
+                  </Link>
+                </div>
+              )}
+              <span aria-hidden="true" className="block w-10 h-1 bg-gold" />
+            </div>
+          </aside>
+          <div className="min-w-0">
+            <div className="prose-nlp" dangerouslySetInnerHTML={{ __html: p.html }} />
+            {service && (
+              <Link
+                href={`/services/${service.slug}`}
+                className="group mt-14 flex items-center justify-between gap-4 p-7 rounded-[22px] bg-ink text-white border border-ink hover:border-teal transition-colors"
+              >
+                <span>
+                  <span className="block mono-label text-teal mb-2">Related service</span>
+                  <span className="text-[22px] font-semibold tracking-tight">{service.title}</span>
+                </span>
+                <ArrowRight size={20} className="text-teal shrink-0 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </Link>
+            )}
           </div>
-        )}
+        </div>
       </article>
       <CtaBand />
     </>

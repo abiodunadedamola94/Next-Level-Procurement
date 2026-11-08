@@ -86,9 +86,10 @@ export default function Stage() {
                 </span>
               ))}
             </h1>
+            {/* Visible from the first paint (slide only, no fade): it is the page's largest text, so a fade-in delays LCP. */}
             <motion.p
-              initial={reduce ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={reduce ? false : { y: 14 }}
+              animate={{ y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease }}
               className="mt-7 text-[#d3d8de] text-[clamp(18px,1.5vw,20px)] max-w-[34em]"
             >

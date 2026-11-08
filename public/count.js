@@ -29,7 +29,8 @@
   if (!form) return;
   // seen: the form has come into view
   if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) { if (entries.some(function (x) { return x.isIntersecting; })) { count("view"); io.disconnect(); } }, { threshold: 0.3 });
+    // seen = 30% of the form, or 40% of the screen filled by it (a tall form never reaches 30% on a short screen)
+    var io = new IntersectionObserver(function (entries) { if (entries.some(function (x) { return x.isIntersecting && (x.intersectionRatio >= 0.3 || x.intersectionRect.height >= window.innerHeight * 0.4); })) { count("view"); io.disconnect(); } }, { threshold: [0, 0.1, 0.2, 0.3, 0.5] });
     io.observe(form);
   } else count("view");
   // started: the first time anything in it is touched

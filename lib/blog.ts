@@ -3,7 +3,9 @@ import path from "node:path";
 import { marked } from "marked";
 
 // Blog posts are Markdown files in content/blog with a small front-matter block.
-// status: draft | approved | published. Only "published" posts appear on the site.
+// status: draft | approved | published. Drafts and approved posts show on the site with a
+// "Draft" label (decided 8 Nov 2026) but stay out of Google: noindex, and not in the sitemap.
+// Only "published" posts are indexed. HIDE_DRAFTS=1 hides unpublished posts completely.
 // The content engine (if built) writes the same format.
 
 export type Post = {
@@ -38,8 +40,7 @@ function parse(file: string): Post {
   };
 }
 
-// SHOW_DRAFTS=1 (set on preview deployments only) lets Dorcas read drafts before approving them.
-export function allPosts({ includeDrafts = process.env.SHOW_DRAFTS === "1" } = {}): Post[] {
+export function allPosts({ includeDrafts = process.env.HIDE_DRAFTS !== "1" } = {}): Post[] {
   if (!fs.existsSync(DIR)) return [];
   return fs
     .readdirSync(DIR)
@@ -48,6 +49,11 @@ export function allPosts({ includeDrafts = process.env.SHOW_DRAFTS === "1" } = {
     .filter((p) => includeDrafts || p.status === "published")
     .sort((a, b) => b.date.localeCompare(a.date));
 }
+
+/** Posts Google may index: published only. */
+export const publishedPosts = () => allPosts({ includeDrafts: false });
+
+export const isDraft = (p: Post) => p.status !== "published";
 
 export const getPost = (slug: string) => allPosts().find((p) => p.slug === slug);
 

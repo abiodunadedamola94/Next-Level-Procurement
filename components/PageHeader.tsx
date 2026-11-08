@@ -39,7 +39,7 @@ export default function PageHeader({
                     ) : (
                       <span aria-current="page" className="text-white py-1">{c.label}</span>
                     )}
-                    {i < crumbs.length - 1 && <span aria-hidden="true" className="text-[#5b6470]">/</span>}
+                    {i < crumbs.length - 1 && <span aria-hidden="true" className="text-[#8f97a3]">/</span>}
                   </li>
                 ))}
               </ol>

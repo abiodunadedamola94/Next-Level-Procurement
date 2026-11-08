@@ -11,7 +11,7 @@ import StepsRail from "@/components/StepsRail";
 import StarterKitBand from "@/components/StarterKitBand";
 import { PrimaryLink, WhatsAppLink } from "@/components/Buttons";
 import { services, getService } from "@/lib/services";
-import { allPosts } from "@/lib/blog";
+import { allPosts, isDraft } from "@/lib/blog";
 import { SITE_URL, SITE_NAME, waLink } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -162,7 +162,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {related.map((p) => (
                   <li key={p.slug} className="border-b border-line">
                     <Link href={`/blog/${p.slug}`} className="group flex items-center justify-between gap-4 py-5 text-[18px] font-medium hover:text-teal-text transition-colors">
-                      {p.title}
+                      <span>
+                        {p.title}
+                        {isDraft(p) && <span className="ml-2 align-middle mono-label !text-[10px] text-[#6b5114]">Draft</span>}
+                      </span>
                       <ArrowRight size={18} className="shrink-0 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                     </Link>
                   </li>

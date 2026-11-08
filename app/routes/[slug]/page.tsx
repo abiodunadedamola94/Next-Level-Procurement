@@ -13,7 +13,7 @@ import { Waybill, ServiceCards } from "@/components/Waybill";
 import { PrimaryLink, WhatsAppLink, LineLink } from "@/components/Buttons";
 import { routes, getRoute } from "@/lib/routes";
 import { getService } from "@/lib/services";
-import { allPosts } from "@/lib/blog";
+import { allPosts, isDraft } from "@/lib/blog";
 import { SITE_URL, waLink } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -126,7 +126,10 @@ export default async function RoutePage({ params }: { params: Promise<{ slug: st
             <div>
               <h2 className="mono-label !text-[12px] text-muted mb-5">Read first</h2>
               <Link href={`/blog/${guide.slug}`} className="group flex items-center justify-between gap-4 py-5 border-y border-line text-[20px] tracking-tight hover:text-teal-text transition-colors">
-                {guide.title}
+                <span>
+                  {guide.title}
+                  {isDraft(guide) && <span className="ml-2 align-middle mono-label !text-[10px] text-[#6b5114]">Draft</span>}
+                </span>
                 <ArrowRight size={18} className="shrink-0 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </Link>
             </div>

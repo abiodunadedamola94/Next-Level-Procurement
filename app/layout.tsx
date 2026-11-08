@@ -44,8 +44,13 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     images: ["/hero-bg.jpg"],
   },
-  // Google Search Console: paste the HTML-tag token here once the property is created.
-  // verification: { google: "TOKEN" },
+  // Search Console / Bing: the domain is verified by a DNS TXT record on Vercel DNS. If an
+  // HTML-tag token is ever needed instead, set GOOGLE_SITE_VERIFICATION or BING_SITE_VERIFICATION
+  // in the Vercel project's environment variables; no code change needed.
+  verification: {
+    ...(process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : {}),
+    ...(process.env.BING_SITE_VERIFICATION ? { other: { "msvalidate.01": process.env.BING_SITE_VERIFICATION } } : {}),
+  },
 };
 
 const organizationJsonLd = {

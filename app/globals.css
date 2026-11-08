@@ -177,3 +177,13 @@ html.lenis, html.lenis body { height: auto; }
 /* Hero reel: three clips crossfade behind the hero */
 @keyframes reel-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 :root[data-theme="dark"] .bg-\[\#fde8e6\] { background-color: #3a1714; }
+
+/* Draft label on blog posts (light colours set inline; these are the dark equivalents) */
+:root[data-theme="dark"] .text-\[\#6b5114\] { color: #e8c77a; }
+:root[data-theme="dark"] .bg-\[\#fbf3df\] { background-color: #2a2312; }
+:root[data-theme="dark"] .text-\[\#3d2f0b\] { color: #efe3c4; }
+
+/* Long-form text: spacing inside grouped sections, and dark-theme colour */
+.prose-nlp > section > * + * { margin-top: 1.25em; }
+:root[data-theme="dark"] .prose-nlp { color: #c3c9d1; }
+:root[data-theme="dark"] .prose-nlp a:hover { color: #ffffff; }

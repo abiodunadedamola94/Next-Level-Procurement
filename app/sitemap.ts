@@ -1,13 +1,12 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { services } from "@/lib/services";
-import { allPosts } from "@/lib/blog";
+import { allPosts, publishedPosts } from "@/lib/blog";
 import { routes } from "@/lib/routes";
 import { audiences } from "@/lib/audiences";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const posts = allPosts();
   const pages: MetadataRoute.Sitemap = [
     { url: SITE_URL, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE_URL}/services`, lastModified: now, priority: 0.9 },
@@ -22,10 +21,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/about`, lastModified: now, priority: 0.7 },
     { url: `${SITE_URL}/quote`, lastModified: now, priority: 0.8 },
     { url: `${SITE_URL}/contact`, lastModified: now, priority: 0.6 },
+    { url: `${SITE_URL}/privacy`, lastModified: now, priority: 0.2 },
   ];
-  if (posts.length) {
-    pages.push({ url: `${SITE_URL}/blog`, lastModified: now, priority: 0.6 });
-    for (const p of posts) pages.push({ url: `${SITE_URL}/blog/${p.slug}`, lastModified: new Date(p.date), priority: 0.6 });
-  }
+  if (allPosts().length) pages.push({ url: `${SITE_URL}/blog`, lastModified: now, priority: 0.6 });
+  // Drafts show on the site but are not offered to Google until they are published.
+  for (const p of publishedPosts()) pages.push({ url: `${SITE_URL}/blog/${p.slug}`, lastModified: new Date(p.date), priority: 0.6 });
   return pages;
 }

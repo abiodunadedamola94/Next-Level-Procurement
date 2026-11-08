@@ -83,7 +83,10 @@ const Footer = () => {
       <div className="border-t border-ink-line">
         <div className="wrap py-6 flex flex-col sm:flex-row gap-2 justify-between mono-label text-[#7b8390] !text-[11.5px]">
           <p>© {new Date().getFullYear()} Next Level Procurement. All rights reserved.</p>
-          <p>UK · China · Europe · Turkey · Africa</p>
+          <p className="flex flex-wrap gap-x-5 gap-y-1">
+            <Link href="/privacy" className="hover:text-white transition-colors underline-offset-4 hover:underline">Privacy</Link>
+            <span>UK · China · Europe · Turkey · Africa</span>
+          </p>
         </div>
       </div>
     </footer>

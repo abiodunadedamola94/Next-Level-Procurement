@@ -5,7 +5,8 @@ import { ArrowRight } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import CtaBand from "@/components/CtaBand";
 import Reveal from "@/components/Reveal";
-import { allPosts, formatDate } from "@/lib/blog";
+import { allPosts, formatDate, isDraft } from "@/lib/blog";
+import DraftTag from "@/components/DraftTag";
 import { getService } from "@/lib/services";
 
 export const metadata: Metadata = {
@@ -34,6 +35,11 @@ export default function BlogPage() {
       />
       <section className="section">
         <div className="wrap">
+          {posts.some(isDraft) && (
+            <p className="mb-8 max-w-[44em] text-muted">
+              Posts marked draft are written for Next Level Procurement and are waiting for her approval. They may change before they are published.
+            </p>
+          )}
           {!lead ? (
             <p className="text-muted text-[18px]">Our first guides are on the way.</p>
           ) : (
@@ -45,6 +51,7 @@ export default function BlogPage() {
                       Latest · {formatDate(lead.date)}
                       {lead.service && getService(lead.service) ? ` · ${getService(lead.service)!.title}` : ""}
                     </p>
+                    {isDraft(lead) && <DraftTag tone="dark" className="mt-4 self-start" />}
                     <h2 className="mt-5 text-[clamp(30px,3.6vw,46px)]">{lead.title}</h2>
                     <p className="mt-5 text-muted-dark text-[18px] max-w-[32em]">{lead.summary}</p>
                     <span className="mt-auto pt-10 inline-flex items-center gap-2 font-semibold text-teal">
@@ -73,6 +80,7 @@ export default function BlogPage() {
                           {formatDate(p.date)}
                           {p.service && getService(p.service) ? ` · ${getService(p.service)!.title}` : ""}
                         </p>
+                        {isDraft(p) && <DraftTag className="mt-4 self-start" />}
                         <h2 className="mt-4 text-[26px] leading-tight">{p.title}</h2>
                         <p className="mt-3 text-muted">{p.summary}</p>
                         <span className="mt-auto pt-8 inline-flex items-center gap-2 font-semibold text-teal-text">

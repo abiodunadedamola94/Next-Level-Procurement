@@ -6,7 +6,8 @@ import { ArrowRight } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
-import { allPosts, getPost, formatDate } from "@/lib/blog";
+import { allPosts, getPost, formatDate, isDraft } from "@/lib/blog";
+import DraftTag from "@/components/DraftTag";
 import { getService } from "@/lib/services";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 
@@ -28,6 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: p.summary,
     alternates: { canonical: `/blog/${p.slug}` },
     openGraph: { type: "article", title, description: p.summary, url: `/blog/${p.slug}`, publishedTime: p.date },
+    // Drafts are readable on the site but kept out of search results until approved.
+    ...(isDraft(p) ? { robots: { index: false, follow: true } } : {}),
   };
 }
 
@@ -39,6 +42,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   return (
     <>
+      {!isDraft(p) && (
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -51,6 +55,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           mainEntityOfPage: `${SITE_URL}/blog/${p.slug}`,
         }}
       />
+      )}
       <PageHeader
         eyebrow={formatDate(p.date)}
         title={p.title}
@@ -62,7 +67,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <aside className="hidden lg:block">
             <div className="sticky top-32 space-y-6">
               <div>
-                <p className="mono-label text-muted">Published</p>
+                <p className="mono-label text-muted">{isDraft(p) ? "Written" : "Published"}</p>
                 <p className="mt-1 font-medium">{formatDate(p.date)}</p>
               </div>
               {service && (
@@ -77,6 +82,12 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             </div>
           </aside>
           <div className="min-w-0">
+            {isDraft(p) && (
+              <div className="mb-10 p-5 rounded-[8px] border border-[#b08a3a] bg-[#fbf3df] text-[#3d2f0b]">
+                <DraftTag />
+                <p className="mt-3 text-[15px]">This guide is a draft written for Next Level Procurement. It has not been approved yet and may change before it is published.</p>
+              </div>
+            )}
             <div className="prose-nlp" dangerouslySetInnerHTML={{ __html: p.html }} />
             {service && (
               <Link

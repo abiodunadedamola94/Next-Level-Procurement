@@ -34,7 +34,7 @@ const Footer = () => {
       <div className="wrap pt-16 pb-10">
         <div className="grid sm:grid-cols-2 lg:grid-cols-[1.25fr_repeat(5,1fr)] gap-x-8 gap-y-12">
           <div className="sm:col-span-2 lg:col-span-1">
-            <Image src="/logo-nlp.png" alt="Next Level Procurement" width={720} height={240} className="w-36 h-auto mb-6" />
+            <Image src="/logo-nlp.png" alt="Next Level Procurement" width={720} height={240} sizes="144px" className="w-36 h-auto mb-6" />
             <p className="text-[19px] tracking-tight leading-snug max-w-[12em]">{MOTTO}</p>
             <ul className="mt-6 space-y-1 text-[14.5px]">
               <li>

@@ -122,7 +122,7 @@ function Block({ i, onActive }: { i: number; onActive: (i: number) => void }) {
           {s.ctaLabel}
           <ArrowRight size={15} aria-hidden="true" className="transition-transform group-hover:translate-x-[3px]" />
         </Link>
-        <LineLink href={`/services/${s.slug}`}>Read more</LineLink>
+        <LineLink href={`/services/${s.slug}`}>Read more<span className="sr-only"> about {s.title}</span></LineLink>
       </div>
     </div>
   );

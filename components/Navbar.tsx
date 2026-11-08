@@ -188,7 +188,7 @@ const Navbar = ({ showBlog = false }: { showBlog?: boolean }) => {
         <div className={`transition-[background-color,border-color] duration-300 border-b ${solid ? "bg-ink/95 backdrop-blur-xl border-ink-line" : "bg-ink/0 border-transparent"}`}>
           <div className="wrap flex items-center justify-between h-[72px] gap-6">
             <Link href="/" className="flex items-center shrink-0 py-2" aria-label="Next Level Procurement, home">
-              <Image loading="eager" src="/logo-nlp.png" alt="" width={720} height={240} className="h-8 xl:h-9 w-auto" />
+              <Image loading="eager" src="/logo-nlp.png" alt="" width={720} height={240} sizes="108px" className="h-8 xl:h-9 w-auto" />
               <span className="ml-3 pl-3 border-l border-ink-line text-white text-[14px] leading-[1.15] tracking-tight hidden min-[400px]:block">
                 Next Level
                 <br />

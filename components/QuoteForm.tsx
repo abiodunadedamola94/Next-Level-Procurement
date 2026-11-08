@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 
 import { waLink, EMAIL } from "@/lib/site";
@@ -21,7 +22,7 @@ const empty: Fields = { service: "", what: "", quantity: "", from: "", to: "", b
 const sources = ["UK", "China", "Europe", "Turkey", "Africa", "Not sure"];
 
 const input =
-  "w-full rounded-xl bg-white border border-line px-4 text-[16px] text-text placeholder:text-[#6b7380] min-h-[52px] transition-[border-color,box-shadow] focus:outline-none focus:border-text focus:ring-4 focus:ring-teal/25 aria-[invalid=true]:border-[#b42318]";
+  "w-full bg-white border border-line px-4 text-[16px] text-text placeholder:text-[#6b7380] min-h-[52px] transition-[border-color,box-shadow] focus:outline-none focus:border-text focus:ring-4 focus:ring-teal/25 rounded-[4px] aria-[invalid=true]:border-[#b42318]";
 const label = "block text-[15px] font-semibold text-text mb-2";
 const optional = <span className="font-normal text-muted"> (optional)</span>;
 
@@ -43,6 +44,21 @@ export default function QuoteForm() {
   const [f, setF] = useState<Fields>(empty);
   const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
   const [sent, setSent] = useState(false);
+  const params = useSearchParams();
+
+  // Carry over what the visitor already typed (hero, closing band) or the market page they came from.
+  useEffect(() => {
+    const what = params.get("what") ?? "";
+    const from = params.get("from") ?? "";
+    const service = params.get("service") ?? "";
+    if (what || from || service)
+      setF((prev) => ({
+        ...prev,
+        what: what || prev.what,
+        from: sources.includes(from) ? from : prev.from,
+        service: services.some((s) => s.title === service) ? service : prev.service,
+      }));
+  }, [params]);
 
   const set = (k: keyof Fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setF({ ...f, [k]: e.target.value });
@@ -81,7 +97,7 @@ export default function QuoteForm() {
     ) : null;
 
   return (
-    <form onSubmit={submit} noValidate className="rounded-[22px] bg-white border border-line p-6 md:p-10 space-y-7">
+    <form id="form" onSubmit={submit} noValidate className="rounded-[8px] bg-white border border-line p-6 md:p-10 space-y-7 scroll-mt-28">
       <Group n="01" title="What you need">
         <div>
           <label htmlFor="q-service" className={label}>Service{optional}</label>

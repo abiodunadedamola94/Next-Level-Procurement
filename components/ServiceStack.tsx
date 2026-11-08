@@ -13,7 +13,7 @@ import { services } from "@/lib/services";
 
 function PurchasingArt() {
   return (
-    <div className="relative h-full min-h-[280px] rounded-[18px] overflow-hidden">
+    <div className="relative h-full min-h-[280px] rounded-[6px] overflow-hidden">
       <Image src="/photos/ship.webp" alt="A container ship at sea, loaded with shipping containers" fill sizes="(min-width: 1024px) 480px, 100vw" className="object-cover" />
       <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
       <div className="absolute left-4 right-4 bottom-4 rounded-xl bg-ink/85 backdrop-blur border border-ink-line p-4 text-white">
@@ -31,7 +31,7 @@ function PurchasingArt() {
 
 function ShoppingArt() {
   return (
-    <div className="h-full min-h-[280px] rounded-[18px] bg-paper border border-line grid place-items-center p-6">
+    <div className="h-full min-h-[280px] rounded-[6px] bg-paper border border-line grid place-items-center p-6">
       <div className="w-full max-w-[340px] rounded-xl bg-white border border-line shadow-[0_24px_48px_-28px_rgba(18,19,23,.35)] rotate-[-2deg] overflow-hidden">
         <div className="h-2 bg-gold" />
         <div className="p-5 font-mono text-[12.5px] text-text">
@@ -62,7 +62,7 @@ function ShoppingArt() {
 function ConsumablesArt() {
   const items = ["Bin bags", "Microfibre cloths", "Disposable gloves", "Disposable napkins"];
   return (
-    <div className="relative h-full min-h-[280px] rounded-[18px] overflow-hidden">
+    <div className="relative h-full min-h-[280px] rounded-[6px] overflow-hidden">
       <Image src="/photos/warehouse.webp" alt="A forklift moving a pallet of boxed goods in a warehouse" fill sizes="(min-width: 1024px) 480px, 100vw" className="object-cover" />
       <div className="absolute inset-0 bg-ink/45" />
       <div className="absolute left-4 right-4 bottom-4 rounded-xl bg-white text-text overflow-hidden">
@@ -100,7 +100,7 @@ function Panel({ i, progress, total }: { i: number; progress: MotionValue<number
     <div className="lg:sticky lg:h-[calc(100svh-120px)] lg:max-h-[640px]" style={{ top: `${104 + i * 28}px` }}>
       <motion.article
         style={{ scale }}
-        className={`origin-top h-full rounded-[26px] border ${t.card} p-6 md:p-10 grid lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-12 shadow-[0_-24px_60px_-40px_rgba(18,19,23,.5)]`}
+        className={`origin-top h-full rounded-[8px] border ${t.card} p-6 md:p-10 grid lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-12 shadow-[0_-24px_60px_-40px_rgba(18,19,23,.5)]`}
       >
         <div className="flex flex-col min-w-0">
           <p className={`mono-label ${t.label} flex justify-between`}>

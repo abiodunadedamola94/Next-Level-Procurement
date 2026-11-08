@@ -39,7 +39,7 @@ export async function generateMetadata({
 // The service sheet shown beside the header: a waybill summary of the page.
 function ServiceSheet({ i, title, whoFor }: { i: number; title: string; whoFor: string[] }) {
   return (
-    <div className="rounded-[22px] border border-ink-line bg-ink-2 p-6 md:p-7 shadow-[0_40px_80px_-40px_rgba(0,0,0,.85)]">
+    <div className="rounded-[8px] border border-ink-line bg-ink-2 p-6 md:p-7 shadow-[0_40px_80px_-40px_rgba(0,0,0,.85)]">
       <div className="flex justify-between mono-label !text-[11.5px] text-muted-dark">
         <span>Service sheet</span>
         <span>
@@ -117,7 +117,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="rounded-[22px] border border-line bg-white overflow-hidden">
+            <div className="rounded-[8px] border border-line bg-white overflow-hidden">
               <h2 className="mono-label !text-[12px] text-muted px-6 py-4 bg-paper border-b border-line flex justify-between font-normal tracking-[0.08em]">
                 <span>What&apos;s included</span>
                 <span>{String(s.includes.length).padStart(2, "0")} items</span>

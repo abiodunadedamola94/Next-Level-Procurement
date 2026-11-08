@@ -77,18 +77,18 @@ const steps = [
   },
 ];
 
-export default function ProcessBeam() {
+export default function ProcessBeam({ n = "06" }: { n?: string | null }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 65%", "end 65%"] });
   const scaleY = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
   return (
-    <section className="section bg-white" id="how" aria-labelledby="how-title">
+    <section className="section bg-white" id="how" data-chapter="How it works" aria-labelledby="how-title">
       <div className="wrap">
         <Reveal className="max-w-[760px]">
-          <p className="mono-label text-teal-text">How it works</p>
-          <h2 id="how-title" className="mt-5 text-[clamp(36px,4.6vw,60px)]">Four steps. One team owns all of them.</h2>
+          <p className="mono-label !text-[12px] text-muted flex items-center gap-4">{n && <span className="text-teal-text">{n}</span>} How it works</p>
+          <h2 id="how-title" className="mt-6 text-[clamp(36px,4.6vw,64px)]">Four steps. One team owns all of them.</h2>
           <p className="mt-5 text-muted text-[19px] max-w-[36em]">
             From your first message to the day it arrives, you know where your order is and who is looking after it.
           </p>

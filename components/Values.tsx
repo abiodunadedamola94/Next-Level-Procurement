@@ -20,7 +20,7 @@ export default function Values() {
   const y = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["-12%", "12%"]);
 
   return (
-    <section ref={ref} className="section bg-ink text-white relative overflow-hidden" aria-labelledby="why-title">
+    <section ref={ref} id="values" className="section bg-ink text-white relative overflow-hidden scroll-mt-20" aria-labelledby="values-title">
       <motion.div style={{ y }} className="absolute inset-[-14%_0] pointer-events-none" aria-hidden="true">
         <Image src="/photos/containers.webp" alt="" fill sizes="100vw" className="object-cover opacity-30" />
       </motion.div>
@@ -28,7 +28,7 @@ export default function Values() {
       <div className="relative wrap">
         <Reveal className="max-w-[760px]">
           <p className="mono-label text-teal">Who we are</p>
-          <h2 id="why-title" className="mt-5 text-[clamp(36px,4.6vw,60px)]">We don&apos;t just buy. We build.</h2>
+          <h2 id="values-title" className="mt-5 text-[clamp(36px,4.6vw,60px)]">We don&apos;t just buy. We build.</h2>
           <p className="mt-5 text-muted-dark text-[19px] max-w-[36em]">
             We are a structured procurement ecosystem built on trust, diligence and integrity. Our mission is to be the
             most dependable procurement partner for growing businesses.
@@ -38,7 +38,7 @@ export default function Values() {
           {values.map((v, i) => {
             const Icon = v.icon;
             return (
-              <Reveal key={v.title} delay={i * 0.1} className="rounded-[22px] border border-ink-line bg-ink-2/85 backdrop-blur-md p-8">
+              <Reveal key={v.title} delay={i * 0.1} className="rounded-[8px] border border-ink-line bg-ink-2/85 backdrop-blur-md p-8">
                 <Icon size={28} className="text-gold" aria-hidden="true" />
                 <h3 className="mt-6 text-[26px]">{v.title}</h3>
                 <p className="mt-3 text-muted-dark">{v.text}</p>

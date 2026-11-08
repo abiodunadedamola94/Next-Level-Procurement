@@ -38,6 +38,6 @@ const arcs: Arc[] = [
   { from: "af", to: "uk" },
 ];
 
-export default function RouteMap() {
-  return <RouteMapArcs width={W} height={H} dataUri={dataUri} places={places} arcs={arcs} />;
+export default function RouteMap({ after, n }: { after?: React.ReactNode; n?: string | null }) {
+  return <RouteMapArcs width={W} height={H} dataUri={dataUri} places={places} arcs={arcs} after={after} n={n} />;
 }

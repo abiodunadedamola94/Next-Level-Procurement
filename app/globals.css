@@ -42,7 +42,8 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: clip;
   }
-  h1, h2, h3, h4 { letter-spacing: -0.03em; line-height: 1.04; text-wrap: balance; font-weight: 600; }
+  h1, h2 { letter-spacing: -0.035em; line-height: 1.02; text-wrap: balance; font-weight: 400; }
+  h3, h4 { letter-spacing: -0.02em; line-height: 1.15; text-wrap: balance; font-weight: 600; }
   p { text-wrap: pretty; }
   :focus-visible { outline: 2px solid var(--color-teal); outline-offset: 3px; border-radius: 6px; }
   ::selection { background: var(--color-teal); color: var(--color-ink); }
@@ -79,24 +80,34 @@
   -webkit-text-stroke: 1px #444955;
 }
 
-/* Pill buttons */
+/* Waybill buttons: squared tag, mono label, arrow in its own cell */
 @utility btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   min-height: 52px;
-  padding: 0 24px;
-  border-radius: 999px;
+  padding: 0 22px;
+  border-radius: 4px;
   border: 1px solid transparent;
-  font-weight: 600;
-  font-size: 16px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 13.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
-  transition: background-color 0.2s var(--ease-out-quint), color 0.2s var(--ease-out-quint),
-    border-color 0.2s var(--ease-out-quint), transform 0.2s var(--ease-out-quint);
+  transition: background-color 0.25s var(--ease-out-quint), color 0.25s var(--ease-out-quint),
+    border-color 0.25s var(--ease-out-quint), transform 0.2s var(--ease-out-quint);
   &:active { transform: scale(0.98); }
+}
+
+/* Hairline column guides behind a section: the ledger lines of the page */
+@utility guides {
+  background-image: linear-gradient(90deg, currentColor 1px, transparent 1px);
+  background-size: calc((min(1200px, 100% - 40px)) / 4) 100%;
+  background-position: calc((100% - min(1200px, 100% - 40px)) / 2) 0;
 }
 
 /* Blog post body, on paper */
@@ -113,6 +124,17 @@
 .prose-nlp li + li { margin-top: 0.5em; }
 .prose-nlp li::marker { color: var(--color-teal-text); }
 .prose-nlp blockquote { border-left: 2px solid var(--color-gold); padding-left: 1.25em; color: var(--color-text); }
+
+/* Cinematic layer: slow push-in and drifting haze over a still */
+@keyframes kenburns { from { transform: scale(1.04) translate3d(0,0,0); } to { transform: scale(1.16) translate3d(-2%, -1.5%, 0); } }
+@keyframes drift { from { transform: translate3d(-8%, 0, 0); } to { transform: translate3d(8%, -3%, 0); } }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+.kenburns { animation: kenburns 28s ease-in-out infinite alternate; will-change: transform; }
+.drift { animation: drift 22s ease-in-out infinite alternate; will-change: transform; }
+.drift-slow { animation: drift 34s ease-in-out infinite alternate-reverse; will-change: transform; }
+.marquee { animation: marquee 40s linear infinite; }
+.grain { background-image: url("data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%27160%27 height=%27160%27><filter id=%27n%27><feTurbulence type=%27fractalNoise%27 baseFrequency=%270.9%27 numOctaves=%272%27 stitchTiles=%27stitch%27/></filter><rect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27 opacity=%270.5%27/></svg>"); }
 
 /* Lenis smooth scroll */
 html.lenis, html.lenis body { height: auto; }

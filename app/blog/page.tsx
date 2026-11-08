@@ -39,7 +39,7 @@ export default function BlogPage() {
           ) : (
             <>
               <Reveal>
-                <Link href={`/blog/${lead.slug}`} className="group grid lg:grid-cols-[1.2fr_1fr] rounded-[26px] bg-ink text-white overflow-hidden border border-ink">
+                <Link href={`/blog/${lead.slug}`} className="group grid lg:grid-cols-[1.2fr_1fr] rounded-[8px] bg-ink text-white overflow-hidden border border-ink">
                   <div className="p-8 md:p-12 flex flex-col">
                     <p className="mono-label text-teal">
                       Latest · {formatDate(lead.date)}
@@ -68,7 +68,7 @@ export default function BlogPage() {
                 <ul className="mt-4 grid md:grid-cols-2 gap-4">
                   {rest.map((p, i) => (
                     <Reveal as="li" key={p.slug} delay={i * 0.08}>
-                      <Link href={`/blog/${p.slug}`} className="group flex flex-col h-full rounded-[22px] bg-white border border-line p-8 hover:border-text transition-colors">
+                      <Link href={`/blog/${p.slug}`} className="group flex flex-col h-full rounded-[8px] bg-white border border-line p-8 hover:border-text transition-colors">
                         <p className="mono-label text-muted">
                           {formatDate(p.date)}
                           {p.service && getService(p.service) ? ` · ${getService(p.service)!.title}` : ""}

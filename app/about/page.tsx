@@ -63,12 +63,12 @@ export default function AboutPage() {
                 sourcing products in bulk for your business, we are here to help you buy smarter and source with
                 confidence.
               </p>
-              <div className="relative mt-10 aspect-[4/3] rounded-[22px] overflow-hidden">
+              <div className="relative mt-10 aspect-[4/3] rounded-[8px] overflow-hidden">
                 <Image src="/photos/warehouse.webp" alt="A forklift moving a pallet of boxed goods in a warehouse" fill sizes="(min-width: 1024px) 560px, 100vw" className="object-cover" />
               </div>
             </Reveal>
 
-            <Reveal delay={0.1} className="lg:sticky lg:top-32 rounded-[22px] border border-line bg-white overflow-hidden">
+            <Reveal delay={0.1} className="lg:sticky lg:top-32 rounded-[8px] border border-line bg-white overflow-hidden">
               <h2 className="mono-label !text-[12px] text-muted px-6 py-4 bg-paper border-b border-line font-normal flex justify-between">
                 <span>Our services include</span>
                 <span>06</span>

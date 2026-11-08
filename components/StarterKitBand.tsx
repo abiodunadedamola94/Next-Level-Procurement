@@ -9,7 +9,7 @@ export default function StarterKitBand({ compact = false }: { compact?: boolean 
     <Reveal className={compact ? "" : "wrap"}>
       <Link
         href="/starter-kit"
-        className="group grid md:grid-cols-[auto_1fr_auto] gap-6 md:gap-10 items-center rounded-[26px] border border-[#e8d9b4] bg-gold-soft p-7 md:p-10 hover:border-gold transition-colors"
+        className="group grid md:grid-cols-[auto_1fr_auto] gap-6 md:gap-10 items-center rounded-[8px] border border-[#e8d9b4] bg-gold-soft p-7 md:p-10 hover:border-gold transition-colors"
       >
         <span className="w-16 h-16 rounded-2xl bg-ink text-gold grid place-items-center" aria-hidden="true">
           <GraduationCap size={30} />

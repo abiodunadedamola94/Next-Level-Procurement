@@ -41,7 +41,11 @@ export default function RouteMapArcs({
   dataUri,
   places,
   arcs,
+  after,
+  n = "04",
 }: {
+  after?: React.ReactNode;
+  n?: string | null;
   width: number;
   height: number;
   dataUri: string;
@@ -52,12 +56,12 @@ export default function RouteMapArcs({
   const byId = Object.fromEntries(places.map((p) => [p.id, p]));
 
   return (
-    <section className="section bg-ink text-white relative overflow-hidden" aria-labelledby="map-title">
+    <section id="where-we-buy" data-chapter="Where we buy" className="section bg-ink text-white relative overflow-hidden" aria-labelledby="map-title">
       <div className="wrap">
         <div className="grid lg:grid-cols-[1fr_auto] gap-8 items-end">
           <Reveal className="max-w-[720px]">
-            <p className="mono-label text-teal">Where we buy</p>
-            <h2 id="map-title" className="mt-5 text-[clamp(36px,4.6vw,60px)]">
+            <p className="mono-label !text-[12px] text-muted-dark flex items-center gap-4">{n && <span className="text-teal">{n}</span>} Where we buy</p>
+            <h2 id="map-title" className="mt-6 text-[clamp(36px,4.6vw,64px)]">
               From anywhere in the world, to anywhere.
             </h2>
             <p className="mt-5 text-muted-dark text-[19px] max-w-[34em]">
@@ -135,7 +139,7 @@ export default function RouteMapArcs({
 
         {/* Hop table: the same information as text, readable on any screen */}
         <div className="mt-14 grid lg:grid-cols-[1.4fr_1fr] gap-4">
-          <Reveal className="rounded-[22px] border border-ink-line bg-ink-2 overflow-hidden">
+          <Reveal className="rounded-[8px] border border-ink-line bg-ink-2 overflow-hidden">
             <p className="mono-label !text-[11.5px] text-muted-dark px-6 py-4 border-b border-ink-line flex justify-between">
               <span>Where we buy</span>
               <span>What we do there</span>
@@ -153,7 +157,7 @@ export default function RouteMapArcs({
               ))}
             </ul>
           </Reveal>
-          <Reveal delay={0.1} className="rounded-[22px] border border-ink-line bg-ink-2 overflow-hidden flex flex-col">
+          <Reveal delay={0.1} className="rounded-[8px] border border-ink-line bg-ink-2 overflow-hidden flex flex-col">
             <p className="mono-label !text-[11.5px] text-muted-dark px-6 py-4 border-b border-ink-line">Where it goes</p>
             <ul className="flex-1">
               {destinations.map((d) => (
@@ -166,6 +170,7 @@ export default function RouteMapArcs({
             <p className="px-6 py-4 text-[13px] text-muted-dark border-t border-ink-line">Routes on the map are examples.</p>
           </Reveal>
         </div>
+        {after}
       </div>
     </section>
   );

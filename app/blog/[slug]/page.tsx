@@ -81,7 +81,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             {service && (
               <Link
                 href={`/services/${service.slug}`}
-                className="group mt-14 flex items-center justify-between gap-4 p-7 rounded-[22px] bg-ink text-white border border-ink hover:border-teal transition-colors"
+                className="group mt-14 flex items-center justify-between gap-4 p-7 rounded-[8px] bg-ink text-white border border-ink hover:border-teal transition-colors"
               >
                 <span>
                   <span className="block mono-label text-teal mb-2">Related service</span>

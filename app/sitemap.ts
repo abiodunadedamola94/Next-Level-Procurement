@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { services } from "@/lib/services";
 import { allPosts } from "@/lib/blog";
+import { routes } from "@/lib/routes";
+import { audiences } from "@/lib/audiences";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -10,6 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: SITE_URL, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE_URL}/services`, lastModified: now, priority: 0.9 },
     ...services.map((s) => ({ url: `${SITE_URL}/services/${s.slug}`, lastModified: now, priority: 0.9 })),
+    { url: `${SITE_URL}/routes`, lastModified: now, priority: 0.8 },
+    ...routes.map((r) => ({ url: `${SITE_URL}/routes/${r.slug}`, lastModified: now, priority: 0.8 })),
+    { url: `${SITE_URL}/for`, lastModified: now, priority: 0.7 },
+    ...audiences.map((a) => ({ url: `${SITE_URL}/for/${a.slug}`, lastModified: now, priority: 0.7 })),
+    { url: `${SITE_URL}/how-it-works`, lastModified: now, priority: 0.7 },
+    { url: `${SITE_URL}/faq`, lastModified: now, priority: 0.6 },
     { url: `${SITE_URL}/starter-kit`, lastModified: now, priority: 0.8 },
     { url: `${SITE_URL}/about`, lastModified: now, priority: 0.7 },
     { url: `${SITE_URL}/quote`, lastModified: now, priority: 0.8 },

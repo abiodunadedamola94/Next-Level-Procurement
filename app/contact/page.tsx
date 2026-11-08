@@ -36,7 +36,7 @@ export default function ContactPage() {
               <a
                 href={href}
                 {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className={`group flex flex-col h-full min-h-[280px] rounded-[22px] border p-8 transition-colors ${
+                className={`group flex flex-col h-full min-h-[280px] rounded-[8px] border p-8 transition-colors ${
                   featured ? "bg-ink text-white border-ink hover:border-teal" : "bg-white border-line hover:border-text"
                 }`}
               >

@@ -1,40 +1,53 @@
 import type { Metadata } from "next";
 
-import Hero from "@/components/home/Hero";
-import Ledger from "@/components/home/Ledger";
+import Stage from "@/components/home/Stage";
+import ChapterRail from "@/components/home/ChapterRail";
+import ProblemPair from "@/components/home/ProblemPair";
+import ServiceSplit from "@/components/home/ServiceSplit";
 import RouteMap from "@/components/home/RouteMap";
+import RouteCards from "@/components/home/RouteCards";
+import AudienceBento from "@/components/home/AudienceBento";
 import ProcessBeam from "@/components/home/ProcessBeam";
-import ServiceStack from "@/components/ServiceStack";
 import StarterKitBand from "@/components/StarterKitBand";
-import Values from "@/components/Values";
+import FaqList from "@/components/FaqList";
 import CtaBand from "@/components/CtaBand";
 import Reveal from "@/components/Reveal";
+import { LineLink } from "@/components/Buttons";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
+// Chapters: 01 who we are (over the cinematic stage), 02 why, 03 services (split screen),
+// 04 where we buy (map + market carousel), 05 who we serve (bento), 06 how it works, 07 questions.
 export default function Home() {
   return (
     <>
-      <Hero />
-      <Ledger />
-      <RouteMap />
-      <section className="section" id="services" aria-labelledby="services-title">
-        <div className="wrap">
-          <Reveal className="max-w-[760px] mb-16">
-            <p className="mono-label text-teal-text">Services</p>
-            <h2 id="services-title" className="mt-5 text-[clamp(36px,4.6vw,60px)]">Three ways we buy for you.</h2>
-            <p className="mt-5 text-muted text-[19px] max-w-[36em]">
-              For businesses and individuals, from one item to bulk orders.
+      <ChapterRail />
+      <Stage />
+      <ProblemPair />
+      <ServiceSplit />
+      <RouteMap after={<RouteCards />} />
+      <AudienceBento />
+      <ProcessBeam />
+      <div className="bg-white pb-[clamp(64px,8vw,112px)]">
+        <StarterKitBand />
+      </div>
+      <section id="questions" data-chapter="Questions" className="section" aria-labelledby="faq-title">
+        <div className="wrap grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20 items-start">
+          <Reveal className="lg:sticky lg:top-32">
+            <p className="mono-label !text-[12px] text-muted flex items-center gap-4">
+              <span className="text-teal-text">07</span> Questions
             </p>
+            <h2 id="faq-title" className="mt-6 text-[clamp(36px,4.6vw,64px)]">Before you send a request.</h2>
+            <p className="mt-6 text-muted text-[18px] max-w-[26em]">The things people ask first. Anything else, ask us on WhatsApp.</p>
+            <div className="mt-8">
+              <LineLink href="/faq">All questions</LineLink>
+            </div>
           </Reveal>
-          <ServiceStack />
-        </div>
-        <div className="mt-6 lg:mt-0">
-          <StarterKitBand />
+          <Reveal delay={0.1}>
+            <FaqList limit={5} />
+          </Reveal>
         </div>
       </section>
-      <ProcessBeam />
-      <Values />
       <CtaBand />
     </>
   );

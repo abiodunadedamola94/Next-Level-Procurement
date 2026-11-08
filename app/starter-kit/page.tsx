@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 function PriceCard() {
   return (
-    <div className="rounded-[22px] border border-[#3a3320] bg-ink-2 overflow-hidden shadow-[0_40px_80px_-40px_rgba(0,0,0,.85)]">
+    <div className="rounded-[8px] border border-[#3a3320] bg-ink-2 overflow-hidden shadow-[0_40px_80px_-40px_rgba(0,0,0,.85)]">
       <div className="h-1.5 bg-gold" />
       <div className="p-7">
         <div className="flex justify-between items-start">
@@ -88,7 +88,7 @@ export default function StarterKitPage() {
               It is for anyone who wants to start importing from China for themselves or their business.
             </p>
           </Reveal>
-          <Reveal delay={0.1} className="rounded-[22px] bg-white border border-line p-8 self-start">
+          <Reveal delay={0.1} className="rounded-[8px] bg-white border border-line p-8 self-start">
             <p className="mono-label text-muted">Rather we do it for you?</p>
             <p className="mt-4 text-[22px] font-semibold tracking-tight leading-snug">
               We import from China for our clients, from sourcing to delivery.

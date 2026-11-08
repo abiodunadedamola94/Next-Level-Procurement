@@ -35,7 +35,7 @@ export default function ServicesPage() {
         lead="For businesses and individuals. And if you want to import from China yourself, our StarterKit shows you how."
         crumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
         aside={
-          <ol className="rounded-[22px] border border-ink-line bg-ink-2 overflow-hidden">
+          <ol className="rounded-[8px] border border-ink-line bg-ink-2 overflow-hidden">
             {services.map((s, i) => (
               <li key={s.slug} className="grid grid-cols-[44px_1fr] items-center px-6 py-5 border-t first:border-t-0 border-ink-line">
                 <span className="mono-label !text-[11px] text-muted-dark">{String(i + 1).padStart(2, "0")}</span>

@@ -48,6 +48,10 @@ const sections: { title: string; body: React.ReactNode }[] = [
           type. It does not use cookies and does not identify you.
         </p>
         <p>
+          On the quote page we also count, by day, how many times the form was seen, started and sent. The count holds no
+          cookie, no device address and nothing you type.
+        </p>
+        <p>
           If you choose a light or dark theme, the choice is saved in your own browser so the site remembers it. It is not sent to us.
         </p>
       </>

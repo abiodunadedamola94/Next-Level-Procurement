@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { MessageCircle } from "lucide-react";
+import Script from "next/script";
 
 import { waLink, EMAIL } from "@/lib/site";
 import { services } from "@/lib/services";
@@ -86,6 +87,8 @@ export default function QuoteForm() {
       f.phone && `My number: ${f.phone}`,
     ].filter(Boolean);
     window.open(waLink(lines.join("\n")), "_blank", "noopener,noreferrer");
+    // Site counter (MoCreative kit): records that a quote was sent. Nothing typed goes with it.
+    (window as unknown as { mcCount?: (e: string) => void }).mcCount?.("finish");
     setSent(true);
   };
 
@@ -97,6 +100,9 @@ export default function QuoteForm() {
     ) : null;
 
   return (
+    <>
+    {/* Counts form seen, started and sent, by day. No cookie, nothing about the visitor. */}
+    <Script src="/count.js" data-site="nextlevelprocurement" data-form="#form" data-manual="" strategy="afterInteractive" />
     <form id="form" onSubmit={submit} noValidate className="rounded-[8px] bg-white border border-line p-6 md:p-10 space-y-7 scroll-mt-28">
       <Group n="01" title="What you need">
         <div>
@@ -173,5 +179,6 @@ export default function QuoteForm() {
         </p>
       </div>
     </form>
+    </>
   );
 }

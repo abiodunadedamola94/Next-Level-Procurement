@@ -1,3 +1,4 @@
+import { themeScript } from "@/components/ThemeToggle";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
@@ -82,7 +83,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        {/* Sets data-theme before first paint so the page never flashes the wrong theme */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-full flex flex-col">
         <JsonLd data={organizationJsonLd} />
         <a

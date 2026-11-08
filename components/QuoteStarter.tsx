@@ -15,7 +15,7 @@ export default function QuoteStarter({ id = "starter", dark = true }: { id?: str
   };
   return (
     <form onSubmit={go} className="w-full max-w-[560px]" aria-label="Start a quote">
-      <label htmlFor={id} className={`block mono-label !text-[11.5px] mb-2.5 ${dark ? "text-muted-dark" : "text-muted"}`}>
+      <label htmlFor={id} className={`block mono-label !text-[11.5px] mb-2.5 ${dark ? "text-[#c6ccd4]" : "text-muted"}`}>
         What do you need bought?
       </label>
       <div

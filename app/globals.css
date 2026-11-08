@@ -144,3 +144,36 @@ html.lenis, html.lenis body { height: auto; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
+
+/* ------------------------------------------------------------------
+   Theme: system, light or dark. The choice is stored per visitor and
+   applied as data-theme on <html> before first paint (see layout.tsx).
+   Ink sections are dark in both themes; dark mode turns the paper
+   sections dark and lifts the text-on-paper colours so every pair
+   still passes 4.5:1. Checked with tools/contrast.mjs, 8 Nov 2026.
+   ------------------------------------------------------------------ */
+:root { color-scheme: light; }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-paper: #0c0d10;
+  --color-text: #eceef1;
+  --color-muted: #a3acb8;
+  --color-line: #2a2d35;
+  --color-teal-text: #2cbaac;
+  --color-gold-text: #d9ab4a;
+  --color-teal-soft: #11302c;
+  --color-gold-soft: #26200f;
+}
+:root[data-theme="dark"] .bg-white,
+:root[data-theme="dark"] .hover\:bg-white:hover { background-color: var(--color-ink-2); }
+:root[data-theme="dark"] .btn.bg-ink { background-color: var(--color-teal); color: var(--color-ink); }
+:root[data-theme="dark"] .btn.bg-ink:hover { background-color: var(--color-teal-hover); }
+:root[data-theme="dark"] .group:hover .group-hover\:text-ink { color: var(--color-gold); }
+:root[data-theme="dark"] .placeholder\:text-\[\#6b7380\]::placeholder { color: #8a929e; }
+:root[data-theme="dark"] .text-\[\#b42318\] { color: #ff8a80; }
+:root[data-theme="dark"] .border-\[\#b42318\] { border-color: #ff8a80; }
+:root[data-theme="dark"] .border-\[\#e8d9b4\] { border-color: #4a3d1f; }
+
+/* Hero reel: three clips crossfade behind the hero */
+@keyframes reel-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+:root[data-theme="dark"] .bg-\[\#fde8e6\] { background-color: #3a1714; }

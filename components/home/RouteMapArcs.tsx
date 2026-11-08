@@ -147,7 +147,7 @@ export default function RouteMapArcs({
             <ul>
               {markets.map((m, i) => (
                 <li key={m.code} className="grid grid-cols-[36px_1fr] sm:grid-cols-[36px_1fr_auto] gap-x-4 gap-y-0.5 items-center px-6 py-4 border-t first:border-t-0 border-ink-line">
-                  <span className="mono-label !text-[11px] text-[#7b8390]">0{i + 1}</span>
+                  <span className="mono-label !text-[11px] text-[#8f97a3]">0{i + 1}</span>
                   <span className="font-semibold flex items-center gap-3">
                     <span className="w-2 h-2 rounded-full border-2 border-teal shrink-0" aria-hidden="true" />
                     {m.name}

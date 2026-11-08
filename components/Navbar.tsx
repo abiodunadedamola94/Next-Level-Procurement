@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 
 import { WHATSAPP_LINK, PHONE_DISPLAY, PHONE_TEL, EMAIL } from "@/lib/site";
 import { navMenus, type NavMenu, type NavFeature } from "@/lib/nav";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -179,6 +180,7 @@ const Navbar = ({ showBlog = false }: { showBlog?: boolean }) => {
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-teal hover:text-teal-hover transition-colors py-2">
                 <MessageCircle size={12} aria-hidden="true" /> WhatsApp
               </a>
+              <ThemeToggle />
             </div>
           </div>
         </div>
@@ -186,7 +188,12 @@ const Navbar = ({ showBlog = false }: { showBlog?: boolean }) => {
         <div className={`transition-[background-color,border-color] duration-300 border-b ${solid ? "bg-ink/95 backdrop-blur-xl border-ink-line" : "bg-ink/0 border-transparent"}`}>
           <div className="wrap flex items-center justify-between h-[72px] gap-6">
             <Link href="/" className="flex items-center shrink-0 py-2" aria-label="Next Level Procurement, home">
-              <Image loading="eager" src="/logo.png" alt="Next Level Procurement" width={831} height={84} className="h-5 min-[420px]:h-6 xl:h-7 w-auto" />
+              <Image loading="eager" src="/logo-nlp.png" alt="" width={720} height={240} className="h-8 xl:h-9 w-auto" />
+              <span className="ml-3 pl-3 border-l border-ink-line text-white text-[14px] leading-[1.15] tracking-tight hidden min-[400px]:block">
+                Next Level
+                <br />
+                Procurement
+              </span>
             </Link>
 
             <ul className="hidden lg:flex items-center gap-0.5">
@@ -324,6 +331,10 @@ const Navbar = ({ showBlog = false }: { showBlog?: boolean }) => {
                   <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn border-[#3a3e48] text-white">
                     <MessageCircle size={17} aria-hidden="true" /> Chat on WhatsApp
                   </a>
+                </div>
+                <div className="mt-8 flex items-center justify-between gap-4">
+                  <span className="mono-label !text-[11px] text-muted-dark">Theme</span>
+                  <ThemeToggle large />
                 </div>
                 <p className="mt-8 mono-label !text-[11px] text-muted-dark leading-relaxed">
                   {PHONE_DISPLAY}

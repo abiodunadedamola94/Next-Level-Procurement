@@ -107,5 +107,36 @@ export const starterKit = {
   short: "Training on how to import from China.",
   seoTitle: "Made in China StarterKit: Learn to Import from China | Next Level Procurement",
   seoDescription:
-    "The Made in China StarterKit is our training on how to import from China. $20.",
+    "The Made in China StarterKit is our training on how to import from China. $20. See what you will learn before you buy.",
+  // The course outline shown on /starter-kit. "proposed" = drafted by MoCreative from what a first import
+  // from China involves, shown with a label until Next Level Procurement confirms or edits the lesson list.
+  // When she confirms: edit the modules to match her course and set outlineStatus to "confirmed".
+  outlineStatus: "proposed" as "proposed" | "confirmed",
+  outcome: "By the end you should be able to find a supplier in China, check them before you pay, and get your first order shipped and cleared to you.",
+  modules: [
+    {
+      title: "Is importing from China right for you?",
+      lessons: ["What sells well when bought from China", "Minimum order quantities and how to start small", "Working out the full cost before you buy: product, shipping, duty"],
+    },
+    {
+      title: "Finding suppliers",
+      lessons: ["Where suppliers are listed and how to search them", "Reading a product listing and a price list", "Manufacturers, traders and agents: who you are talking to"],
+    },
+    {
+      title: "Checking a supplier before you pay",
+      lessons: ["The questions to ask first", "Warning signs of a supplier to avoid", "Ordering and judging samples"],
+    },
+    {
+      title: "Paying safely",
+      lessons: ["Common payment methods and their risks", "Deposits, balances and what to agree in writing", "Avoiding the usual scams"],
+    },
+    {
+      title: "Shipping and customs",
+      lessons: ["Air or sea: cost, speed and when to use each", "Freight forwarders and shared containers", "Customs clearance and duty where you live"],
+    },
+    {
+      title: "Receiving and reordering",
+      lessons: ["Checking the goods when they arrive", "What to do when an order is wrong", "Building a supplier you can reorder from"],
+    },
+  ],
 };

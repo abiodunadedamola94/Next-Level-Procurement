@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, GraduationCap } from "lucide-react";
+import { ArrowDown, Check, GraduationCap } from "lucide-react";
 
 import PageHeader from "@/components/PageHeader";
 import CtaBand from "@/components/CtaBand";
@@ -31,7 +31,7 @@ function PriceCard() {
         <p className="mt-6 mono-label !text-[11.5px] text-gold">Price</p>
         <p className="mt-1 text-[64px] font-semibold tracking-[-0.04em] leading-none">{starterKit.price}</p>
         <ul className="mt-6">
-          {["Training on importing from China", "For individuals and businesses"].map((i) => (
+          {["Training on importing from China", "For individuals and businesses", `${starterKit.modules.length} modules, outline below`].map((i) => (
             <li key={i} className="flex items-center gap-3 py-3 border-t border-ink-line text-[15px]">
               <Check size={16} className="text-teal shrink-0" aria-hidden="true" /> {i}
             </li>
@@ -42,6 +42,49 @@ function PriceCard() {
         </PrimaryLink>
       </div>
     </div>
+  );
+}
+
+// What the course covers, so a buyer knows what they get before paying. While outlineStatus is
+// "proposed" the outline carries a label saying Next Level Procurement is confirming it.
+function Outline() {
+  const proposed = starterKit.outlineStatus === "proposed";
+  return (
+    <section id="outline" className="section bg-white border-y border-line scroll-mt-24" aria-labelledby="outline-title">
+      <div className="wrap grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20 items-start">
+        <Reveal className="lg:sticky lg:top-32">
+          <p className="mono-label text-teal-text">Course outline</p>
+          <h2 id="outline-title" className="mt-5 text-[clamp(32px,4vw,52px)]">What you&apos;ll learn</h2>
+          <p className="mt-6 text-muted text-[18px] max-w-[30em]">{starterKit.outcome}</p>
+          {proposed && (
+            <p className="mt-6 rounded-[6px] border border-[#b08a3a] bg-[#fbf3df] text-[#3d2f0b] px-4 py-3 text-[15px] leading-relaxed max-w-[30em]">
+              <span className="mono-label !text-[11px] text-[#6b5114] block mb-1">Proposed outline · awaiting confirmation</span>
+              Next Level Procurement is confirming the final lesson list. Ask us on WhatsApp what is included before you buy.
+            </p>
+          )}
+          <div className="mt-8 flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3">
+            <PrimaryLink href={STARTERKIT_LINK} tone="paper">Get the StarterKit ({starterKit.price})</PrimaryLink>
+            <WhatsAppLink href={waLink("Hello, before I buy the Made in China StarterKit, what does it include?")} tone="paper">Ask what&apos;s included</WhatsAppLink>
+          </div>
+        </Reveal>
+        <ol className="grid sm:grid-cols-2 gap-4">
+          {starterKit.modules.map((m, i) => (
+            <li key={m.title} className="rounded-[8px] border border-line bg-paper p-6">
+              <p className="mono-label !text-[11.5px] text-muted">Module {String(i + 1).padStart(2, "0")}</p>
+              <h3 className="mt-3 text-[20px] font-semibold tracking-tight leading-snug">{m.title}</h3>
+              <ul className="mt-4 space-y-2.5">
+                {m.lessons.map((l) => (
+                  <li key={l} className="flex gap-2.5 text-[15.5px] text-text leading-snug">
+                    <Check size={16} aria-hidden="true" className="text-teal-text mt-0.5 shrink-0" />
+                    {l}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
   );
 }
 
@@ -75,6 +118,9 @@ export default function StarterKitPage() {
         <WhatsAppLink href={waLink("Hello, I have a question about the Made in China StarterKit.")}>
           Ask a question first
         </WhatsAppLink>
+        <a href="#outline" className="inline-flex items-center gap-2 min-h-11 px-1 text-[15px] font-semibold text-teal hover:text-teal-hover underline-offset-4 hover:underline">
+          <ArrowDown size={16} aria-hidden="true" /> See what you&apos;ll learn
+        </a>
       </PageHeader>
 
       <section className="section">
@@ -102,6 +148,8 @@ export default function StarterKitPage() {
           </Reveal>
         </div>
       </section>
+
+      <Outline />
 
       <CtaBand title="Rather we import for you?" em="We handle it end to end." text="Tell us what you need and we'll handle it from sourcing to delivery." />
     </>

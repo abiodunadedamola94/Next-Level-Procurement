@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next Level Procurement website
 
-## Getting Started
+The website of Next Level Procurement: purchasing and sourcing from anywhere, UK personal shopping, consumables supply, and the Made in China StarterKit. Live at https://nextlevelprocurements.com.
 
-First, run the development server:
+Built with Next.js (app router), React and Tailwind CSS, hosted on Vercel. Every push to `main` deploys to the live site.
+
+## Run it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Where things are
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/`: the pages. Each page sets its own title, description and structured data.
+- `components/`: the parts of each page.
+- `lib/site.ts`: the name, motto, phone, email, WhatsApp and StarterKit links used everywhere.
+- `lib/services.ts`: the three services and the StarterKit.
+- `content/blog/`: blog posts as Markdown. `status: draft` shows the post with a "Draft · awaiting approval" label, kept out of Google and the sitemap; `status: published` makes it public.
+- `public/count.js`: the enquiry counter on the quote form (counts seen, started and sent; no cookies).
+- `scripts/build-route-map.mjs`: rebuilds the dotted map image behind the route map.
 
-## Learn More
+## Search engines
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`app/sitemap.ts`, `app/robots.ts` and `public/llms.txt` tell Google, Bing and AI search what is on the site. Search Console can be verified by a DNS record, or by setting `GOOGLE_SITE_VERIFICATION` in the Vercel project settings.

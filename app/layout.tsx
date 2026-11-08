@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import SmoothScroll from "@/components/SmoothScroll";
+import SiteOnly from "@/components/SiteOnly";
 import { allPosts } from "@/lib/blog";
 
 const geistSans = Geist({
@@ -102,10 +103,14 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <SmoothScroll />
-        <Navbar showBlog={allPosts().length > 0} />
+        <SiteOnly>
+          <SmoothScroll />
+          <Navbar showBlog={allPosts().length > 0} />
+        </SiteOnly>
         <main id="main" className="flex-1">{children}</main>
-        <Footer />
+        <SiteOnly>
+          <Footer />
+        </SiteOnly>
         <Analytics />
       </body>
     </html>

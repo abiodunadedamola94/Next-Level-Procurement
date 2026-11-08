@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useSpring, useReducedMotion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 import { MessageCircle, Search, Ship, PackageCheck } from "lucide-react";
 
 const steps = [

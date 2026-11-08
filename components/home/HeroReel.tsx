@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 import { Pause, Play } from "lucide-react";
 
 // Three moving scenes behind the hero: sea, air, road. AI-generated illustrations, not footage of

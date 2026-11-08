@@ -2,7 +2,8 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 import { Handshake, ScanSearch, ShieldCheck } from "lucide-react";
 import Reveal from "./Reveal";
 

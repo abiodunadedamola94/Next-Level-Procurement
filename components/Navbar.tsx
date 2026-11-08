@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Menu, X, ArrowRight, ChevronDown, Phone, Mail, MessageCircle, GraduationCap, Globe2, Send } from "lucide-react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";

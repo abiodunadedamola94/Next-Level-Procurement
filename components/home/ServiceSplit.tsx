@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 import { Check, ArrowRight } from "lucide-react";
 
 import Cinematic from "@/components/Cinematic";

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 // Fades and lifts content in once as it enters the viewport.
 // With reduced motion the content is simply shown.

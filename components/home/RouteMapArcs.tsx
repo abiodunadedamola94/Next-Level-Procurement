@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 import Reveal from "@/components/Reveal";
 
 export type Place = { id: string; label: string; kind: "source" | "dest" | "both"; x: number; y: number };

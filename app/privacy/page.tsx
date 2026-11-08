@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy" },
 };
 
-// Written from what the site actually does (checked 8 Nov 2026): the quote form opens WhatsApp
-// and stores nothing on a server; the theme choice stays in the browser; analytics is Vercel's
+// Written from what the site actually does (checked 8 Nov 2026): the quote form emails her inbox (site-enquiry, kept 12 months) and opens WhatsApp
+// with a copy; the theme choice stays in the browser; analytics is Vercel's
 // cookieless page counter. Update this page if any of that changes.
 const sections: { title: string; body: React.ReactNode }[] = [
   {
@@ -28,9 +28,10 @@ const sections: { title: string; body: React.ReactNode }[] = [
     body: (
       <>
         <p>
-          The quote form asks what you need, how many, where from, where to, by when, and how to contact you. When you press send,
-          your phone or computer opens WhatsApp with that message written out. Nothing is sent until you send it in WhatsApp, and
-          this website does not keep a copy.
+          The quote form asks what you need, how many, where from, where to, by when, your name, and a WhatsApp number or email so
+          we can reply. When you press send, two things happen: your answers come to our inbox by email, and your phone or computer
+          opens WhatsApp with the same message written out, which you can send there too. We keep a copy of each request for 12
+          months and then delete it. Nothing about your device is kept with it.
         </p>
         <p>
           If you email, call or message us, we see what you send and your contact details. We use them only to answer you, to
@@ -61,7 +62,8 @@ const sections: { title: string; body: React.ReactNode }[] = [
     title: "Who else sees it",
     body: (
       <p>
-        Messages you send through WhatsApp are handled by WhatsApp, and email by our email provider. When we buy or ship for you,
+        Messages you send through WhatsApp are handled by WhatsApp, and email by our email provider. Quote requests are passed to our
+        inbox and stored by our website partner, MoCreative Concept, using Supabase and Resend. When we buy or ship for you,
         we pass on only what a supplier or carrier needs to fill the order, such as a delivery name and address. We do not sell
         your information.
       </p>
@@ -69,7 +71,12 @@ const sections: { title: string; body: React.ReactNode }[] = [
   },
   {
     title: "How long we keep it",
-    body: <p>We keep order messages and records for as long as we need them to deliver your order and keep proper business records.</p>,
+    body: (
+      <p>
+        Quote requests sent through the website are deleted after 12 months. We keep order messages and records for as long as we
+        need them to deliver your order and keep proper business records.
+      </p>
+    ),
   },
   {
     title: "Your choices",

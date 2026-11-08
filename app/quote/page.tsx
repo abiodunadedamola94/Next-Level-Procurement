@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 const next = [
-  "You send the message on WhatsApp.",
+  "Your request reaches our inbox, and WhatsApp opens so you can send it there too.",
   "We ask anything we need to know.",
   "We send you a quote.",
 ];

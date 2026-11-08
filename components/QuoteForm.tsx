@@ -17,9 +17,12 @@ type Fields = {
   by: string;
   name: string;
   phone: string;
+  email: string;
 };
 
-const empty: Fields = { service: "", what: "", quantity: "", from: "", to: "", by: "", name: "", phone: "" };
+const empty: Fields = { service: "", what: "", quantity: "", from: "", to: "", by: "", name: "", phone: "", email: "" };
+// The copy that reaches her inbox (MoCreative's site-enquiry function, Supabase). It never blocks WhatsApp.
+const ENQUIRY_URL = "https://wphdwifayyfbvgmymoia.supabase.co/functions/v1/site-enquiry";
 const sources = ["UK", "China", "Europe", "Turkey", "Africa", "Not sure"];
 
 const input =
@@ -70,6 +73,8 @@ export default function QuoteForm() {
     if (!f.what.trim()) err.what = "Tell us what you need.";
     if (!f.to.trim()) err.to = "Tell us where it should be delivered.";
     if (!f.name.trim()) err.name = "Tell us your name.";
+    if (f.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.trim())) err.email = "Check the email address.";
+    else if (!f.phone.trim() && !f.email.trim()) err.phone = "Give us a WhatsApp number or an email so we can reply.";
     setErrors(err);
     if (Object.keys(err).length) {
       document.getElementById(`q-${Object.keys(err)[0]}`)?.focus();
@@ -85,7 +90,18 @@ export default function QuoteForm() {
       f.by && `Needed by: ${f.by}`,
       `Name: ${f.name}`,
       f.phone && `My number: ${f.phone}`,
+      f.email && `My email: ${f.email}`,
     ].filter(Boolean);
+    // Email copy first. Fire and forget: keepalive lets it finish while WhatsApp takes over.
+    const trap = (document.getElementById("q-website") as HTMLInputElement | null)?.value ?? "";
+    try {
+      fetch(ENQUIRY_URL, {
+        method: "POST",
+        keepalive: true,
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify({ k: "nextlevelprocurement", website: trap, f: { ...f, page: window.location.pathname } }),
+      }).catch(() => {});
+    } catch {}
     window.open(waLink(lines.join("\n")), "_blank", "noopener,noreferrer");
     // Site counter (MoCreative kit): records that a quote was sent. Nothing typed goes with it.
     (window as unknown as { mcCount?: (e: string) => void }).mcCount?.("finish");
@@ -103,7 +119,7 @@ export default function QuoteForm() {
     <>
     {/* Counts form seen, started and sent, by day. No cookie, nothing about the visitor. */}
     <Script src="/count.js" data-site="nextlevelprocurement" data-form="#form" data-manual="" strategy="afterInteractive" />
-    <form id="form" onSubmit={submit} noValidate className="rounded-[8px] bg-white border border-line p-6 md:p-10 space-y-7 scroll-mt-28">
+    <form id="form" onSubmit={submit} noValidate className="relative rounded-[8px] bg-white border border-line p-6 md:p-10 space-y-7 scroll-mt-28">
       <Group n="01" title="What you need">
         <div>
           <label htmlFor="q-service" className={label}>Service{optional}</label>
@@ -157,22 +173,36 @@ export default function QuoteForm() {
             <input id="q-name" value={f.name} onChange={set("name")} className={input} autoComplete="name" aria-invalid={!!errors.name} aria-describedby={errors.name ? "q-name-err" : undefined} />
             {err("name")}
           </div>
+        </div>
+        <p id="q-contact-hint" className="text-[14.5px] text-muted">How should we reply? Give us at least one.</p>
+        <div className="grid sm:grid-cols-2 gap-5">
           <div>
-            <label htmlFor="q-phone" className={label}>WhatsApp number{optional}</label>
-            <input id="q-phone" type="tel" value={f.phone} onChange={set("phone")} className={input} autoComplete="tel" inputMode="tel" />
+            <label htmlFor="q-phone" className={label}>WhatsApp number</label>
+            <input id="q-phone" type="tel" value={f.phone} onChange={set("phone")} className={input} autoComplete="tel" inputMode="tel" aria-invalid={!!errors.phone} aria-describedby={errors.phone ? "q-contact-hint q-phone-err" : "q-contact-hint"} />
+            {err("phone")}
           </div>
+          <div>
+            <label htmlFor="q-email" className={label}>Email</label>
+            <input id="q-email" type="email" value={f.email} onChange={set("email")} className={input} autoComplete="email" inputMode="email" aria-invalid={!!errors.email} aria-describedby={errors.email ? "q-contact-hint q-email-err" : "q-contact-hint"} />
+            {err("email")}
+          </div>
+        </div>
+        {/* Hidden from people; a bot that fills it is ignored. */}
+        <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+          <label htmlFor="q-website">Leave this empty</label>
+          <input id="q-website" name="website" tabIndex={-1} autoComplete="off" defaultValue="" />
         </div>
       </Group>
 
       <div className="pt-2">
         <button type="submit" className="btn w-full bg-ink text-white hover:bg-ink-3 min-h-14 text-[17px]">
-          <MessageCircle size={19} aria-hidden="true" /> Send on WhatsApp
+          <MessageCircle size={19} aria-hidden="true" /> Send request
         </button>
         <p className="mt-4 text-[14.5px] text-muted" aria-live="polite">
           {sent
-            ? "WhatsApp should now be open with your request written out. Press send there and we'll reply."
-            : "This opens WhatsApp with your answers written out. Nothing is stored on this website."}{" "}
-          Prefer email?{" "}
+            ? "We have your request by email. WhatsApp should now be open with it written out too: press send there for the quickest reply."
+            : "We get your request by email straight away, and WhatsApp opens with it written out so you can send it there too."}{" "}
+          Questions first?{" "}
           <a href={`mailto:${EMAIL}`} className="text-teal-text underline underline-offset-4 hover:text-text">
             {EMAIL}
           </a>

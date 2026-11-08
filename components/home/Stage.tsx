@@ -6,29 +6,38 @@ import { MessageCircle } from "lucide-react";
 
 import Cinematic from "@/components/Cinematic";
 import HeroReel from "@/components/home/HeroReel";
-import EngineDemo from "@/components/home/EngineDemo";
+import dynamic from "next/dynamic";
 import QuoteStarter from "@/components/QuoteStarter";
 import { LineLink } from "@/components/Buttons";
 import { WHATSAPP_LINK } from "@/lib/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+// The demo is the heaviest part of the page. Its code loads in its own chunk, so the hero can paint
+// and respond first; the server still renders its HTML, so nothing jumps.
+const EngineDemo = dynamic(() => import("@/components/home/EngineDemo"));
+
 function Statement({ lines, className = "" }: { lines: string[]; className?: string }) {
   const reduce = useReducedMotion();
   return (
     <p className={`uppercase font-light tracking-[0.01em] leading-[1.12] text-[clamp(26px,3.3vw,50px)] ${className}`}>
       {lines.map((l, i) => (
-        <span key={l} className="block overflow-hidden pb-[0.08em]">
+        // The clipping wrapper watches for view, not the line: a line pushed below its clip is never
+        // "in view" to the browser, so some lines stayed hidden (seen on phones, 8 Nov 2026).
+        <motion.span
+          key={l}
+          className="block overflow-hidden pb-[0.08em]"
+          initial={reduce ? false : "hidden"}
+          whileInView="shown"
+          viewport={{ once: true, margin: "-12% 0px" }}
+        >
           <motion.span
             className="block"
-            initial={reduce ? false : { y: "105%" }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: true, margin: "-12% 0px" }}
-            transition={{ duration: 1.1, delay: i * 0.08, ease }}
+            variants={{ hidden: { y: "105%" }, shown: { y: 0, transition: { duration: 1.1, delay: i * 0.08, ease } } }}
           >
             {l}
           </motion.span>
-        </span>
+        </motion.span>
       ))}
     </p>
   );

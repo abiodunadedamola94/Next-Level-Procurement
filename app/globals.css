@@ -130,9 +130,12 @@
 @keyframes drift { from { transform: translate3d(-8%, 0, 0); } to { transform: translate3d(8%, -3%, 0); } }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
-.kenburns { animation: kenburns 28s ease-in-out infinite alternate; will-change: transform; }
-.drift { animation: drift 22s ease-in-out infinite alternate; will-change: transform; }
-.drift-slow { animation: drift 34s ease-in-out infinite alternate-reverse; will-change: transform; }
+.kenburns { animation: kenburns 28s ease-in-out infinite alternate; }
+.drift { animation: drift 22s ease-in-out infinite alternate; }
+.drift-slow { animation: drift 34s ease-in-out infinite alternate-reverse; }
+/* Cinematic layers move only while on screen (components/Cinematic.tsx sets data-playing). */
+.cine:not([data-playing]) :is(.kenburns, .drift, .drift-slow) { animation-play-state: paused; }
+.cine[data-playing] :is(.kenburns, .drift, .drift-slow) { will-change: transform; }
 .marquee { animation: marquee 40s linear infinite; }
 .grain { background-image: url("data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%27160%27 height=%27160%27><filter id=%27n%27><feTurbulence type=%27fractalNoise%27 baseFrequency=%270.9%27 numOctaves=%272%27 stitchTiles=%27stitch%27/></filter><rect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27 opacity=%270.5%27/></svg>"); }
 
@@ -187,3 +190,7 @@ html.lenis, html.lenis body { height: auto; }
 .prose-nlp > section > * + * { margin-top: 1.25em; }
 :root[data-theme="dark"] .prose-nlp { color: #c3c9d1; }
 :root[data-theme="dark"] .prose-nlp a:hover { color: #ffffff; }
+
+/* Off-screen chapters skip layout and paint until they near the screen. "auto" remembers each
+   section's real height once it has been seen, so the scrollbar settles after one pass. */
+.cv-auto { content-visibility: auto; contain-intrinsic-size: auto 900px; }

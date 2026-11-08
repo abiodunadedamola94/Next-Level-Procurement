@@ -23,15 +23,17 @@ export default function Home() {
     <>
       <ChapterRail />
       <Stage />
-      <ProblemPair />
-      <ServiceSplit />
-      <RouteMap after={<RouteCards />} />
-      <AudienceBento />
-      <ProcessBeam />
-      <div className="bg-white pb-[clamp(64px,8vw,112px)]">
+      {/* Below the first screen, each chapter is laid out and painted only as it nears the screen
+          (content-visibility: auto, see .cv-auto in globals.css). */}
+      <div className="cv-auto"><ProblemPair /></div>
+      <div className="cv-auto"><ServiceSplit /></div>
+      <div className="cv-auto"><RouteMap after={<RouteCards />} /></div>
+      <div className="cv-auto"><AudienceBento /></div>
+      <div className="cv-auto"><ProcessBeam /></div>
+      <div className="cv-auto bg-white pb-[clamp(64px,8vw,112px)]">
         <StarterKitBand />
       </div>
-      <section id="questions" data-chapter="Questions" className="section" aria-labelledby="faq-title">
+      <section id="questions" data-chapter="Questions" className="section cv-auto" aria-labelledby="faq-title">
         <div className="wrap grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20 items-start">
           <Reveal className="lg:sticky lg:top-32">
             <p className="mono-label !text-[12px] text-muted flex items-center gap-4">
@@ -48,7 +50,7 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
-      <CtaBand />
+      <div className="cv-auto"><CtaBand /></div>
     </>
   );
 }

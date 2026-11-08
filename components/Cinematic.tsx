@@ -1,8 +1,13 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 // The cinematic layer: a still that moves like footage (slow push-in, drifting haze, grain),
 // or a real looping video once one is approved. Decorative only: the meaning is always in the text.
 // Reduced motion: globals.css stops the animations, the still stays.
+// The movement runs only while the layer is on screen (data-playing), so the five layers on the
+// home page never animate at once; off screen they are still pictures.
 export default function Cinematic({
   src,
   video,
@@ -18,8 +23,17 @@ export default function Cinematic({
   priority?: boolean;
   haze?: boolean;
 }) {
+  const box = useRef<HTMLDivElement>(null);
+  const [playing, setPlaying] = useState(false);
+  useEffect(() => {
+    const el = box.current;
+    if (!el || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(([e]) => setPlaying(e.isIntersecting), { rootMargin: "120px 0px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
   return (
-    <div aria-hidden="true" className={`absolute inset-0 overflow-hidden ${className}`}>
+    <div ref={box} aria-hidden="true" data-playing={playing ? "" : undefined} className={`cine absolute inset-0 overflow-hidden ${className}`}>
       {video ? (
         <video
           className="absolute inset-0 w-full h-full object-cover"

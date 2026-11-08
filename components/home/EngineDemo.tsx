@@ -373,7 +373,7 @@ export default function EngineDemo() {
         <div className="rounded-[8px] overflow-hidden bg-white text-text">
           {/* App bar */}
           <div className="bg-ink text-white flex items-center gap-4 px-4 sm:px-5 h-14">
-            <Image src="/logo-nlp.png" alt="" width={720} height={240} className="h-6 w-auto shrink-0" />
+            <Image src="/logo-nlp.png" alt="" width={720} height={240} sizes="72px" className="h-6 w-auto shrink-0" />
             <div className="hidden md:flex items-center gap-2 rounded-[5px] border border-ink-line px-3 h-9 w-56 text-[13px] text-muted-dark" aria-hidden="true">
               <Search size={14} /> Search orders
             </div>

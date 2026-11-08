@@ -22,6 +22,28 @@ export default function HeroReel({ indexClassName = "bottom-0" }: { indexClassNa
   const vids = useRef<(HTMLVideoElement | null)[]>([]);
   const box = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
+  // Stills first; the videos start once the page has loaded and gone quiet, so decoding them
+  // never competes with the first paint or with the page becoming usable on a slow phone.
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    let idle = 0;
+    let t = 0;
+    const go = () => {
+      const ric = (window as unknown as { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
+      t = window.setTimeout(() => {
+        if (ric) idle = ric(() => setReady(true), { timeout: 2500 });
+        else setReady(true);
+      }, 1200);
+    };
+    if (document.readyState === "complete") go();
+    else window.addEventListener("load", go, { once: true });
+    return () => {
+      window.removeEventListener("load", go);
+      clearTimeout(t);
+      const cic = (window as unknown as { cancelIdleCallback?: (id: number) => void }).cancelIdleCallback;
+      if (idle && cic) cic(idle);
+    };
+  }, []);
 
   // Only play while the hero is on screen.
   useEffect(() => {
@@ -33,6 +55,7 @@ export default function HeroReel({ indexClassName = "bottom-0" }: { indexClassNa
   }, []);
 
   useEffect(() => {
+    if (!ready) return;
     vids.current.forEach((v, i) => {
       if (!v) return;
       if (i === active && !paused && visible && !reduce) {
@@ -43,14 +66,14 @@ export default function HeroReel({ indexClassName = "bottom-0" }: { indexClassNa
       }
       // The clip fading out keeps playing to its end, so the crossfade never freezes.
     });
-  }, [active, paused, visible, reduce]);
+  }, [active, paused, visible, reduce, ready]);
 
   // Advance on a timer so a slow or failed clip never stalls the reel.
   useEffect(() => {
-    if (paused || reduce || !visible) return;
+    if (paused || reduce || !visible || !ready) return;
     const t = setTimeout(() => setActive((a) => (a + 1) % scenes.length), SLIDE_MS);
     return () => clearTimeout(t);
-  }, [active, paused, reduce, visible]);
+  }, [active, paused, reduce, visible, ready]);
 
   return (
     <div ref={box} className="absolute inset-0">
@@ -61,9 +84,11 @@ export default function HeroReel({ indexClassName = "bottom-0" }: { indexClassNa
           className="absolute inset-0 transition-opacity duration-[1400ms] ease-[cubic-bezier(.22,1,.36,1)]"
           style={{ opacity: i === active ? 1 : 0 }}
         >
-          {reduce ? (
+          {reduce || !ready ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={s.poster} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: s.position }} />
+            (i === active || ready || reduce) && (
+              <img src={s.poster} alt="" fetchPriority={i === active ? "high" : "low"} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: s.position }} />
+            )
           ) : (
             <video
               ref={(el) => {
@@ -74,7 +99,7 @@ export default function HeroReel({ indexClassName = "bottom-0" }: { indexClassNa
               poster={s.poster}
               muted
               playsInline
-              preload={i === 0 ? "auto" : "metadata"}
+              preload={i === active ? "auto" : "none"}
             >
               <source src={s.video} type="video/mp4" />
             </video>
@@ -98,11 +123,11 @@ export default function HeroReel({ indexClassName = "bottom-0" }: { indexClassNa
                   <span className="mt-1.5 block h-px w-20 bg-white/20 overflow-hidden">
                     {i === active && (
                       <span
-                        key={`${active}-${paused}`}
+                        key={`${active}-${paused}-${ready}`}
                         className="block h-full bg-teal origin-left"
                         style={{
-                          animation: reduce || paused ? "none" : `reel-progress ${SLIDE_MS}ms linear forwards`,
-                          transform: reduce || paused ? "scaleX(1)" : undefined,
+                          animation: reduce || paused || !ready ? "none" : `reel-progress ${SLIDE_MS}ms linear forwards`,
+                          transform: reduce || paused ? "scaleX(1)" : !ready ? "scaleX(0)" : undefined,
                         }}
                       />
                     )}

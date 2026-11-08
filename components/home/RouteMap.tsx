@@ -9,8 +9,10 @@ const map = new DottedMap({
   region: { lat: { min: -36, max: 64 }, lng: { min: -22, max: 128 } },
 });
 
-const svg = map.getSVG({ radius: 0.2, color: "#2c3039", shape: "circle", backgroundColor: "transparent" });
-const dataUri = `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+// The dots themselves are a static file (public/route-map-dots.svg, from scripts/build-route-map.mjs with the
+// same options), so the browser caches it instead of every page carrying it inline. The map object stays
+// here only to place the pins.
+const dataUri = "/route-map-dots.svg";
 
 const W = (map as unknown as { width: number }).width;
 const H = (map as unknown as { height: number }).height;

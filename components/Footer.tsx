@@ -13,7 +13,7 @@ const link = "text-muted-dark hover:text-white transition-colors inline-block py
 const Footer = () => {
   const menus = navMenus(allPosts().length > 0);
   return (
-    <footer className="bg-ink text-white border-t border-ink-line overflow-hidden">
+    <footer className="cv-auto bg-ink text-white border-t border-ink-line overflow-hidden">
       {/* Closing strip: one more chance to start */}
       <div className="border-b border-ink-line">
         <div className="wrap py-10 grid md:grid-cols-[1fr_auto] gap-6 items-center">

@@ -25,15 +25,15 @@ export default function PageHeader({
         aria-hidden="true"
         className="absolute inset-0 grid-lines opacity-40 [mask-image:radial-gradient(ellipse_70%_80%_at_75%_30%,#000_15%,transparent_75%)]"
       />
-      <div className={`relative wrap pt-32 md:pt-40 pb-16 md:pb-24 ${aside ? "grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-20 items-end" : ""}`}>
+      <div className={`relative wrap pt-28 md:pt-40 pb-14 md:pb-24 ${aside ? "grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-20 items-end" : ""}`}>
         <div className="min-w-0">
           {crumbs && (
-            <nav aria-label="Breadcrumb" className="mb-8">
+            <nav aria-label="Breadcrumb" className="mb-6 sm:mb-8">
               <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 mono-label text-muted-dark">
                 {crumbs.map((c, i) => (
                   <li key={c.label} className="flex items-center gap-2">
                     {c.href ? (
-                      <Link href={c.href} className="hover:text-white transition-colors py-1">
+                      <Link href={c.href} className="inline-block hover:text-white transition-colors py-3 -my-2">
                         {c.label}
                       </Link>
                     ) : (
@@ -49,9 +49,9 @@ export default function PageHeader({
             <span aria-hidden="true" className="w-2 h-2 rounded-[2px] bg-gold" />
             {eyebrow}
           </p>
-          <h1 className="mt-5 text-[clamp(40px,6vw,76px)] max-w-[14ch]">{title}</h1>
-          {lead && <p className="mt-6 text-muted-dark text-[clamp(18px,1.6vw,20px)] max-w-[34em]">{lead}</p>}
-          {children && <div className="mt-9 flex flex-col sm:flex-row flex-wrap gap-3">{children}</div>}
+          <h1 className="mt-4 sm:mt-5 text-[clamp(38px,6vw,76px)] max-w-[14ch]">{title}</h1>
+          {lead && <p className="mt-5 sm:mt-6 text-muted-dark text-[17px] sm:text-[clamp(18px,1.6vw,20px)] max-w-[34em]">{lead}</p>}
+          {children && <div className="mt-8 sm:mt-9 flex flex-col sm:flex-row flex-wrap gap-3">{children}</div>}
         </div>
         {aside && <div className="min-w-0">{aside}</div>}
       </div>

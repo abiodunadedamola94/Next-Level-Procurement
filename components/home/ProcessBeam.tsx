@@ -90,12 +90,12 @@ export default function ProcessBeam({ n = "06" }: { n?: string | null }) {
         <Reveal className="max-w-[760px]">
           <p className="mono-label !text-[12px] text-muted flex items-center gap-4">{n && <span className="text-teal-text">{n}</span>} How it works</p>
           <h2 id="how-title" className="mt-6 text-[clamp(36px,4.6vw,64px)]">Four steps. One team owns all of them.</h2>
-          <p className="mt-5 text-muted text-[19px] max-w-[36em]">
+          <p className="mt-5 text-muted text-[17px] sm:text-[19px] max-w-[36em]">
             From your first message to the day it arrives, you know where your order is and who is looking after it.
           </p>
         </Reveal>
 
-        <div ref={ref} className="relative mt-20">
+        <div ref={ref} className="relative mt-12 sm:mt-20">
           {/* the beam */}
           <div aria-hidden="true" className="absolute left-[27px] md:left-[calc(30%+27px)] top-2 bottom-2 w-0.5 bg-line">
             <motion.div
@@ -104,12 +104,12 @@ export default function ProcessBeam({ n = "06" }: { n?: string | null }) {
             />
           </div>
 
-          <ol className="space-y-24 md:space-y-32">
+          <ol className="space-y-16 md:space-y-32">
             {steps.map((s) => {
               const Icon = s.icon;
               return (
-                <li key={s.n} className="relative grid md:grid-cols-[30%_1fr] gap-6 md:gap-0">
-                  <div className="md:sticky md:top-32 self-start md:pr-10 pl-20 md:pl-0">
+                <li key={s.n} className="relative grid md:grid-cols-[30%_1fr] gap-4 md:gap-0">
+                  <div className="md:sticky md:top-32 self-start md:pr-10 pl-[76px] md:pl-0 min-h-14 flex flex-col justify-center md:block">
                     <p className="mono-label text-muted">Step {s.n}</p>
                     <h3 className="mt-2 text-[clamp(26px,2.6vw,34px)]">{s.title}</h3>
                   </div>
@@ -119,9 +119,9 @@ export default function ProcessBeam({ n = "06" }: { n?: string | null }) {
                   >
                     <Icon size={24} />
                   </span>
-                  <Reveal className="pl-20 md:pl-28">
-                    <p className="text-[19px] text-muted max-w-[30em]">{s.text}</p>
-                    <div className="mt-7">{s.artifact}</div>
+                  <Reveal className="pl-[76px] md:pl-28">
+                    <p className="text-[17px] sm:text-[19px] text-muted max-w-[30em]">{s.text}</p>
+                    <div className="mt-5 sm:mt-7">{s.artifact}</div>
                   </Reveal>
                 </li>
               );

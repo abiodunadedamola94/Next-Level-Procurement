@@ -43,7 +43,7 @@ export default function NotFound() {
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 text-teal hover:text-teal-hover"
+            className="mt-4 inline-flex items-center gap-2 min-h-11 text-teal hover:text-teal-hover"
           >
             <MessageCircle size={17} aria-hidden="true" /> Ask us on WhatsApp
           </a>

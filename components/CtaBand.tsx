@@ -19,10 +19,10 @@ export default function CtaBand({
 }) {
   return (
     <section className="bg-ink text-white relative overflow-hidden">
-      <div className="grid lg:grid-cols-2 min-h-[640px]">
+      <div className="grid lg:grid-cols-2 lg:min-h-[640px]">
         <div className="relative flex items-center">
           <div aria-hidden="true" className="absolute inset-0 grid-lines opacity-25 [mask-image:radial-gradient(70%_70%_at_0%_100%,#000,transparent_75%)]" />
-          <Reveal className="relative w-full px-5 sm:px-10 lg:pl-[max(20px,calc((100vw-1200px)/2))] lg:pr-16 py-24">
+          <Reveal className="relative w-full px-5 sm:px-10 lg:pl-[max(20px,calc((100vw-1200px)/2))] lg:pr-16 py-20 lg:py-24">
             <p className="mono-label !text-[12px] text-teal inline-flex items-center gap-2.5">
               <span aria-hidden="true" className="w-2 h-2 rounded-[2px] bg-gold" />
               {MOTTO}
@@ -31,21 +31,21 @@ export default function CtaBand({
               {title ?? "Let us worry about the buying and deliveries."}{" "}
               <span className="text-teal">{em ?? (title ? "" : "You run your business.")}</span>
             </h2>
-            <p className="mt-6 text-muted-dark text-[19px] max-w-[30em]">{text}</p>
-            <div className="mt-10">
+            <p className="mt-5 sm:mt-6 text-muted-dark text-[17px] sm:text-[19px] max-w-[30em]">{text}</p>
+            <div className="mt-8 sm:mt-10">
               <QuoteStarter id="cta-starter" />
               <a
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-2 text-[15px] text-teal hover:text-teal-hover hover:underline underline-offset-4 py-1"
+                className="mt-3 inline-flex items-center gap-2 min-h-11 text-[15px] text-teal hover:text-teal-hover hover:underline underline-offset-4"
               >
                 <MessageCircle size={16} aria-hidden="true" /> Or chat on WhatsApp
               </a>
             </div>
           </Reveal>
         </div>
-        <div className="relative min-h-[340px] lg:min-h-0">
+        <div className="relative min-h-[280px] sm:min-h-[340px] lg:min-h-0">
           <Cinematic src={photo} />
           <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-ink via-ink/20 to-transparent lg:from-ink/90" />
           <div aria-hidden="true" className="absolute bottom-6 right-6 left-6 lg:left-auto flex flex-wrap justify-end gap-2">

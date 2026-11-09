@@ -110,17 +110,21 @@ export default function HeroReel({ indexClassName = "bottom-0" }: { indexClassNa
       {/* Scene index: which mode is showing, and a way to pick or pause */}
       <div className={`absolute z-10 left-0 right-0 pointer-events-none ${indexClassName}`}>
         <div className="wrap flex items-end justify-between gap-4 pb-5">
-          <ul className="flex gap-5 pointer-events-auto" aria-label="Background scenes">
+          <ul className="flex gap-3 sm:gap-5 pointer-events-auto" aria-label="Background scenes">
             {scenes.map((s, i) => (
               <li key={s.key}>
                 <button
                   type="button"
                   onClick={() => setActive(i)}
                   aria-pressed={i === active}
-                  className={`group text-left mono-label !text-[10.5px] py-2 transition-colors ${i === active ? "text-white" : "text-white/55 hover:text-white"}`}
+                  aria-label={`Show ${s.label.toLowerCase()}`}
+                  className={`group min-h-11 flex flex-col justify-end text-left mono-label !text-[10.5px] whitespace-nowrap pb-1 transition-colors ${i === active ? "text-white" : "text-white/60 hover:text-white"}`}
                 >
-                  <span className="block">0{i + 1} · {s.label}</span>
-                  <span className="mt-1.5 block h-px w-20 bg-white/20 overflow-hidden">
+                  <span className="block" aria-hidden="true">
+                    0{i + 1}
+                    <span className={i === active ? "" : "hidden sm:inline"}> · {s.label}</span>
+                  </span>
+                  <span className={`mt-1.5 block h-px bg-white/20 overflow-hidden transition-[width] duration-500 ${i === active ? "w-20" : "w-8 sm:w-20"}`}>
                     {i === active && (
                       <span
                         key={`${active}-${paused}-${ready}`}

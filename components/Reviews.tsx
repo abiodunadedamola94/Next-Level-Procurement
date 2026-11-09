@@ -43,7 +43,7 @@ export default async function Reviews({ limit = 3, more = true, id = "reviews", 
             {!bare && (
               <>
                 <p className="mono-label !text-[12px] text-muted">Reviews</p>
-                <h2 id={`${id}-title`} className="mt-6 text-[clamp(36px,4.6vw,64px)]">What our customers say.</h2>
+                <h2 id={`${id}-title`} className="mt-5 sm:mt-6 text-[clamp(36px,4.6vw,64px)]">What our customers say.</h2>
               </>
             )}
             {has ? (
@@ -55,7 +55,7 @@ export default async function Reviews({ limit = 3, more = true, id = "reviews", 
                 </span>
               </p>
             ) : (
-              <p className="mt-6 first:mt-0 text-[18px] text-muted max-w-[34em]">
+              <p className="mt-5 sm:mt-6 first:mt-0 text-[17px] sm:text-[18px] text-muted max-w-[34em]">
                 {bare
                   ? "Read what our customers wrote on Trustpilot. Worked with us? Tell others how it went."
                   : "Our reviews are on Trustpilot, an independent review site. We cannot edit or remove them. Worked with us? Tell others how it went."}

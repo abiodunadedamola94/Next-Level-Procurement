@@ -11,14 +11,14 @@ export default function AudienceBento({ n = "05" }: { n?: string | null }) {
   return (
     <section id="who-we-serve" data-chapter="Who we serve" className="section" aria-labelledby="serve-title">
       <div className="wrap">
-        <Reveal className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-end mb-14">
+        <Reveal className="grid lg:grid-cols-2 gap-6 lg:gap-20 items-end mb-10 lg:mb-14">
           <div>
             <p className="mono-label !text-[12px] text-muted flex items-center gap-4">
               {n && <span className="text-teal-text">{n}</span>} Who we serve
             </p>
             <h2 id="serve-title" className="mt-6 text-[clamp(36px,4.6vw,64px)]">One item or a container load.</h2>
           </div>
-          <p className="text-muted text-[19px] max-w-[30em] lg:pb-2">
+          <p className="text-muted text-[17px] sm:text-[19px] max-w-[30em] lg:pb-2">
             Individuals, small businesses, retailers, wholesalers and e-commerce businesses. Pick the one that sounds like
             you.
           </p>
@@ -31,7 +31,7 @@ export default function AudienceBento({ n = "05" }: { n?: string | null }) {
               <Reveal as="li" key={a.slug} delay={i * 0.06} className={spans[i]}>
                 <Link
                   href={`/for/${a.slug}`}
-                  className={`group relative flex flex-col h-full min-h-[300px] rounded-[8px] p-7 md:p-9 overflow-hidden border transition-colors duration-500 ${
+                  className={`group relative flex flex-col h-full sm:min-h-[260px] lg:min-h-[300px] rounded-[8px] p-6 md:p-9 overflow-hidden border transition-colors duration-500 ${
                     dark ? "bg-ink text-white border-ink hover:border-teal/60" : "bg-white border-line hover:border-text"
                   }`}
                 >
@@ -42,11 +42,11 @@ export default function AudienceBento({ n = "05" }: { n?: string | null }) {
                     </span>
                     <ArrowUpRight size={20} aria-hidden="true" className={`transition-transform duration-300 group-hover:rotate-45 ${dark ? "text-teal" : "text-teal-text"}`} />
                   </span>
-                  <span className="relative mt-8 block text-[clamp(24px,2.2vw,30px)] tracking-[-0.03em] leading-tight">{a.title}</span>
+                  <span className="relative mt-6 sm:mt-8 block text-[clamp(24px,2.2vw,30px)] tracking-[-0.03em] leading-tight">{a.title}</span>
                   <span className={`relative mt-3 block text-[16px] max-w-[30em] ${dark ? "text-muted-dark" : "text-muted"}`}>{a.short}</span>
                   {/* Example order tag */}
                   <span
-                    className={`relative mt-auto pt-8 grid grid-cols-[auto_1fr_auto] items-center gap-3 font-mono text-[12px] tracking-[0.04em] ${
+                    className={`relative mt-auto pt-6 sm:pt-8 grid grid-cols-[auto_1fr_auto] items-center gap-3 font-mono text-[12px] tracking-[0.04em] ${
                       dark ? "text-muted-dark" : "text-muted"
                     }`}
                   >

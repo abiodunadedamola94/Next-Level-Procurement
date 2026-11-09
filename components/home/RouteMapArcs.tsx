@@ -64,7 +64,7 @@ export default function RouteMapArcs({
             <h2 id="map-title" className="mt-6 text-[clamp(36px,4.6vw,64px)]">
               From anywhere in the world, to anywhere.
             </h2>
-            <p className="mt-5 text-muted-dark text-[19px] max-w-[34em]">
+            <p className="mt-5 text-muted-dark text-[17px] sm:text-[19px] max-w-[34em]">
               We source from the UK, China, Europe, Africa and other markets, and deliver to the UK, Nigeria and
               other destinations.
             </p>
@@ -75,7 +75,7 @@ export default function RouteMapArcs({
           </Reveal>
         </div>
 
-        <div className="relative mt-14" style={{ aspectRatio: `${width} / ${height}` }}>
+        <div className="relative mt-10 sm:mt-14" style={{ aspectRatio: `${width} / ${height}` }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={dataUri} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full select-none pointer-events-none" />
           <svg viewBox={`0 0 ${width} ${height}`} className="absolute inset-0 w-full h-full" aria-hidden="true">
@@ -138,7 +138,7 @@ export default function RouteMapArcs({
         </div>
 
         {/* Hop table: the same information as text, readable on any screen */}
-        <div className="mt-14 grid lg:grid-cols-[1.4fr_1fr] gap-4">
+        <div className="mt-10 sm:mt-14 grid lg:grid-cols-[1.4fr_1fr] gap-4">
           <Reveal className="rounded-[8px] border border-ink-line bg-ink-2 overflow-hidden">
             <p className="mono-label !text-[11.5px] text-muted-dark px-6 py-4 border-b border-ink-line flex justify-between">
               <span>Where we buy</span>

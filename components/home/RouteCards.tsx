@@ -10,11 +10,14 @@ import { routes } from "@/lib/routes";
 export default function RouteCards({ light = false }: { light?: boolean }) {
   const track = useRef<HTMLUListElement>(null);
   const [edge, setEdge] = useState({ start: true, end: false });
+  const [progress, setProgress] = useState(0);
 
   const update = () => {
     const el = track.current;
     if (!el) return;
     setEdge({ start: el.scrollLeft < 8, end: el.scrollLeft + el.clientWidth > el.scrollWidth - 8 });
+    const room = el.scrollWidth - el.clientWidth;
+    setProgress(room > 0 ? el.scrollLeft / room : 0);
   };
   useEffect(update, []);
 
@@ -30,7 +33,7 @@ export default function RouteCards({ light = false }: { light?: boolean }) {
   }`;
 
   return (
-    <div className="mt-16">
+    <div className="mt-12 sm:mt-16">
       <div className="flex items-end justify-between gap-6 mb-6">
         <p className={`mono-label !text-[12px] ${light ? "text-muted" : "text-muted-dark"}`}>Buy from · {String(routes.length).padStart(2, "0")} markets</p>
         <div className="hidden md:flex gap-2">
@@ -51,7 +54,7 @@ export default function RouteCards({ light = false }: { light?: boolean }) {
           <li key={r.slug} className="snap-start shrink-0 w-[82%] sm:w-[46%] lg:w-[calc((100%-48px)/4)]">
             <Link
               href={`/routes/${r.slug}`}
-              className={`group relative flex flex-col h-full min-h-[300px] rounded-[8px] border p-6 overflow-hidden transition-colors duration-500 ${
+              className={`group relative flex flex-col h-full min-h-[248px] sm:min-h-[300px] rounded-[8px] border p-6 overflow-hidden transition-colors duration-500 ${
                 light ? "bg-white border-line hover:border-text" : "bg-ink-2 border-ink-line hover:border-teal/60"
               }`}
             >
@@ -62,13 +65,13 @@ export default function RouteCards({ light = false }: { light?: boolean }) {
               </span>
               <span
                 aria-hidden="true"
-                className={`mt-6 font-mono font-medium text-[64px] leading-none tracking-[-0.04em] text-transparent transition-colors duration-500 ${
+                className={`mt-5 sm:mt-6 font-mono font-medium text-[56px] sm:text-[64px] leading-none tracking-[-0.04em] text-transparent transition-colors duration-500 ${
                   light ? "[-webkit-text-stroke:1px_#b9c0c6] group-hover:text-ink" : "[-webkit-text-stroke:1px_#4a505c] group-hover:text-gold"
                 }`}
               >
                 {r.code}
               </span>
-              <span className="mt-auto pt-8">
+              <span className="mt-auto pt-6 sm:pt-8">
                 <span className="block text-[22px] tracking-tight">Buy from {r.name}</span>
                 <span className={`block mt-2 text-[15px] leading-snug ${light ? "text-muted" : "text-muted-dark"}`}>{r.short}</span>
               </span>
@@ -76,6 +79,13 @@ export default function RouteCards({ light = false }: { light?: boolean }) {
           </li>
         ))}
       </ul>
+      {/* Where you are in the carousel: shown where the arrow buttons are not */}
+      <div aria-hidden="true" className={`md:hidden mt-5 h-0.5 rounded-full overflow-hidden ${light ? "bg-line" : "bg-ink-line"}`}>
+        <div
+          className={`h-full w-1/3 rounded-full ${light ? "bg-teal-text" : "bg-teal"}`}
+          style={{ transform: `translateX(${progress * 200}%)` }}
+        />
+      </div>
     </div>
   );
 }

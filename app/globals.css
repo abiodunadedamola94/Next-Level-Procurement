@@ -32,7 +32,8 @@
 
 @layer base {
   * { border-color: var(--color-line); }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 88px; }
+  a, button, summary, label, input, select, textarea { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
   body {
     background: var(--color-paper);
     color: var(--color-text);
@@ -64,7 +65,7 @@
 }
 
 @utility section {
-  padding-block: clamp(96px, 12vw, 160px);
+  padding-block: clamp(80px, 12vw, 160px);
 }
 
 /* The blueprint grid behind ink headers */

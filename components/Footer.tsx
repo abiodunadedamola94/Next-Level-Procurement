@@ -7,7 +7,7 @@ import { navMenus } from "@/lib/nav";
 import { allPosts } from "@/lib/blog";
 
 const heading = "mono-label !text-[11.5px] text-[#7b8390] mb-4 pb-3 border-b border-ink-line";
-const link = "text-muted-dark hover:text-white transition-colors inline-block py-1";
+const link = "text-muted-dark hover:text-white transition-colors inline-flex items-center min-h-11 lg:min-h-0 lg:py-1";
 
 // Mega footer: every page in the menu, grouped the same way, so the footer doubles as the site map.
 const Footer = () => {
@@ -16,11 +16,11 @@ const Footer = () => {
     <footer className="cv-auto bg-ink text-white border-t border-ink-line overflow-hidden">
       {/* Closing strip: one more chance to start */}
       <div className="border-b border-ink-line">
-        <div className="wrap py-10 grid md:grid-cols-[1fr_auto] gap-6 items-center">
+        <div className="wrap py-12 sm:py-10 grid md:grid-cols-[1fr_auto] gap-6 items-center">
           <p className="text-[clamp(24px,2.6vw,34px)] tracking-[-0.03em] leading-tight">
             Need something bought, checked and delivered? <span className="text-teal">Send us the details.</span>
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="grid grid-cols-[1fr_auto] sm:flex sm:flex-wrap gap-3">
             <Link href="/quote" className="btn bg-teal text-ink hover:bg-teal-hover group">
               Request a quote <ArrowRight size={15} aria-hidden="true" className="transition-transform group-hover:translate-x-[3px]" />
             </Link>
@@ -32,13 +32,13 @@ const Footer = () => {
       </div>
 
       <div className="wrap pt-16 pb-10">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-[1.25fr_repeat(5,1fr)] gap-x-8 gap-y-12">
-          <div className="sm:col-span-2 lg:col-span-1">
+        <div className="grid grid-cols-2 lg:grid-cols-[1.25fr_repeat(5,1fr)] gap-x-6 sm:gap-x-8 gap-y-10 sm:gap-y-12">
+          <div className="col-span-2 lg:col-span-1">
             <Image src="/logo-nlp.png" alt="Next Level Procurement" width={720} height={240} sizes="144px" className="w-36 h-auto mb-6" />
             <p className="text-[19px] tracking-tight leading-snug max-w-[12em]">{MOTTO}</p>
-            <ul className="mt-6 space-y-1 text-[14.5px]">
+            <ul className="mt-6 lg:space-y-1 text-[15px] lg:text-[14.5px]">
               <li>
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2.5 py-1 text-teal hover:text-teal-hover transition-colors">
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2.5 min-h-11 lg:min-h-0 lg:py-1 text-teal hover:text-teal-hover transition-colors">
                   <MessageCircle size={15} aria-hidden="true" /> Chat on WhatsApp
                 </a>
               </li>
@@ -58,7 +58,7 @@ const Footer = () => {
           {menus.map((m) => (
             <div key={m.label}>
               <h2 className={heading}>{m.label}</h2>
-              <ul className="space-y-1 text-[14.5px]">
+              <ul className="lg:space-y-1 text-[15px] lg:text-[14.5px] leading-snug">
                 {m.groups
                   .flatMap((g) => g.items)
                   .filter((it, i, all) => all.findIndex((x) => x.href === it.href) === i)
@@ -83,8 +83,8 @@ const Footer = () => {
       <div className="border-t border-ink-line">
         <div className="wrap py-6 flex flex-col sm:flex-row gap-2 justify-between mono-label text-[#7b8390] !text-[11.5px]">
           <p>© {new Date().getFullYear()} Next Level Procurement. All rights reserved.</p>
-          <p className="flex flex-wrap gap-x-5 gap-y-1">
-            <Link href="/privacy" className="hover:text-white transition-colors underline-offset-4 hover:underline">Privacy</Link>
+          <p className="flex flex-wrap items-center gap-x-5 gap-y-1">
+            <Link href="/privacy" className="inline-flex items-center min-h-11 lg:min-h-0 hover:text-white transition-colors underline-offset-4 hover:underline">Privacy</Link>
             <span>UK · China · Europe · Africa</span>
           </p>
         </div>

@@ -9,20 +9,20 @@ import { STARTERKIT_LINK } from "@/lib/site";
 export default function StarterKitBand({ compact = false }: { compact?: boolean }) {
   return (
     <Reveal className={compact ? "" : "wrap"}>
-      <div className="grid md:grid-cols-[auto_1fr_auto] gap-6 md:gap-10 items-center rounded-[8px] border border-[#e8d9b4] bg-gold-soft p-7 md:p-10">
-        <span className="w-16 h-16 rounded-2xl bg-ink text-gold grid place-items-center" aria-hidden="true">
-          <BookOpen size={30} />
+      <div className="grid md:grid-cols-[auto_1fr_auto] gap-6 md:gap-10 items-center rounded-[8px] border border-[#e8d9b4] bg-gold-soft p-6 md:p-10">
+        <span className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-ink text-gold grid place-items-center" aria-hidden="true">
+          <BookOpen size={28} />
         </span>
         <div className="min-w-0">
           <p className="mono-label text-gold-text">Guide · PDF · {starterKit.price}</p>
           <p className="mt-2 text-[clamp(24px,2.6vw,34px)] font-semibold tracking-tight leading-tight">
             Want to source from China yourself?
           </p>
-          <p className="mt-2 text-muted text-[17px] max-w-[40em]">
+          <p className="mt-2 text-muted text-[16px] sm:text-[17px] max-w-[40em]">
             Our {starterKit.title} provides practical, step-by-step guidance to help you get started.
           </p>
         </div>
-        <div className="flex flex-col items-start md:items-end gap-2">
+        <div className="flex flex-col items-stretch sm:items-start md:items-end gap-2">
           <a
             href={STARTERKIT_LINK}
             target="_blank"
@@ -32,7 +32,7 @@ export default function StarterKitBand({ compact = false }: { compact?: boolean 
             Get the StarterKit
             <ArrowUpRight size={18} aria-hidden="true" className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
-          <Link href="/starter-kit" className="inline-flex items-center min-h-11 px-1 text-[15px] font-semibold text-text underline underline-offset-4 hover:text-gold-text">
+          <Link href="/starter-kit" className="inline-flex items-center justify-center sm:justify-start min-h-11 px-1 text-[15px] font-semibold text-text underline underline-offset-4 hover:text-gold-text">
             See what is inside
           </Link>
         </div>

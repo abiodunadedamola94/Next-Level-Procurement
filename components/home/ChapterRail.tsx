@@ -1,13 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 // A fixed chapter index on wide screens: shows where you are in the page and jumps between chapters.
 // Reads every [data-chapter] section on the page; hidden until the hero has gone.
+// Narrower screens get a hairline under the menu bar instead: how far down the page you are.
 export default function ChapterRail() {
   const [chapters, setChapters] = useState<{ id: string; label: string }[]>([]);
   const [active, setActive] = useState<string | null>(null);
   const [visible, setVisible] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
     const els = [...document.querySelectorAll<HTMLElement>("[data-chapter]")];
@@ -27,6 +31,12 @@ export default function ChapterRail() {
   }, []);
 
   return (
+    <>
+    <motion.div
+      aria-hidden="true"
+      style={{ scaleX: progress }}
+      className={`min-[1520px]:hidden fixed top-[72px] inset-x-0 z-[49] h-0.5 origin-left bg-gradient-to-r from-teal to-gold transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0"}`}
+    />
     <nav
       aria-label="Page chapters"
       className={`hidden min-[1520px]:block fixed left-4 top-1/2 -translate-y-1/2 z-30 transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
@@ -54,5 +64,6 @@ export default function ChapterRail() {
         })}
       </ol>
     </nav>
+    </>
   );
 }

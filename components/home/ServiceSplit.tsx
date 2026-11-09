@@ -101,29 +101,31 @@ function Block({ i, onActive }: { i: number; onActive: (i: number) => void }) {
   }, [inView, i, onActive]);
   const s = services[i];
   return (
-    <div ref={ref} className="lg:min-h-[78vh] flex flex-col justify-center py-10 lg:py-0 border-t border-line first:border-t-0 lg:border-t-0">
-      <div className="lg:hidden relative aspect-[4/3] rounded-[8px] overflow-hidden mb-8 bg-ink">
+    <div ref={ref} className="lg:min-h-[78vh] flex flex-col justify-center py-12 first:pt-4 lg:py-0 lg:first:pt-0 border-t border-line first:border-t-0 lg:border-t-0">
+      <div className="lg:hidden relative aspect-[4/3] rounded-[8px] overflow-hidden mb-7 bg-ink">
         <Media i={i} />
       </div>
       <p className="mono-label !text-[12px] text-muted">
         <span className="text-teal-text">0{i + 1}</span> / 03
       </p>
       <h3 className="mt-4 text-[clamp(30px,3.2vw,44px)] font-normal tracking-[-0.035em] leading-[1.05]">{s.title}</h3>
-      <p className="mt-5 text-[18px] text-muted max-w-[30em]">{s.intro[0]}</p>
-      <ul className="mt-7 border-t border-line">
+      <p className="mt-4 sm:mt-5 text-[17px] sm:text-[18px] text-muted max-w-[30em]">{s.intro[0]}</p>
+      <ul className="mt-6 sm:mt-7 border-t border-line">
         {s.includes.slice(0, 4).map((it) => (
-          <li key={it} className="flex items-start gap-3 py-3 border-b border-line text-[16px]">
+          <li key={it} className="flex items-start gap-3 py-2.5 sm:py-3 border-b border-line text-[15.5px] sm:text-[16px]">
             <Check size={17} aria-hidden="true" className="text-teal-text mt-1 shrink-0" />
             {it}
           </li>
         ))}
       </ul>
-      <div className="mt-8 flex flex-wrap items-center gap-6">
-        <Link href={`/services/${s.slug}`} className="btn bg-ink text-white hover:bg-ink-3 group">
+      <div className="mt-7 sm:mt-8 flex flex-wrap items-center gap-6">
+        <Link href={`/services/${s.slug}`} className="btn bg-ink text-white hover:bg-ink-3 group w-full sm:w-auto">
           {s.ctaLabel}
           <ArrowRight size={15} aria-hidden="true" className="transition-transform group-hover:translate-x-[3px]" />
         </Link>
-        <LineLink href={`/services/${s.slug}`}>Read more<span className="sr-only"> about {s.title}</span></LineLink>
+        <span className="hidden sm:inline-flex">
+          <LineLink href={`/services/${s.slug}`}>Read more<span className="sr-only"> about {s.title}</span></LineLink>
+        </span>
       </div>
     </div>
   );
@@ -141,7 +143,7 @@ export default function ServiceSplit() {
             <span className="text-teal-text">03</span> What we offer
           </p>
           <h2 id="services-title" className="mt-6 text-[clamp(36px,4.6vw,64px)]">Procurement solutions, tailored to your needs.</h2>
-          <p className="mt-6 text-muted text-[18px] max-w-[38em]">
+          <p className="mt-5 sm:mt-6 text-muted text-[17px] sm:text-[18px] max-w-[38em]">
             We support businesses and individuals with purchasing, product sourcing and personal shopping from the UK and international markets. Whether you need us to manage your procurement from start to finish or want to learn how to source products from China independently, we have a solution for you.
           </p>
         </div>

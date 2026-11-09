@@ -69,7 +69,7 @@ export default function Stage() {
           <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-ink via-ink/60 to-transparent" />
           <div aria-hidden="true" className="absolute inset-0 guides text-white/[0.05]" />
 
-          <motion.div style={{ y: textY, opacity: textFade }} className="relative wrap flex-1 flex flex-col items-center text-center pt-36 lg:pt-44 pb-[190px] lg:pb-[300px]">
+          <motion.div style={{ y: textY, opacity: textFade }} className="relative wrap flex-1 flex flex-col items-start text-left sm:items-center sm:text-center pt-28 sm:pt-36 lg:pt-44 pb-[170px] sm:pb-[190px] lg:pb-[300px]">
             <motion.p
               initial={reduce ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -79,7 +79,7 @@ export default function Stage() {
               <span aria-hidden="true" className="w-2 h-2 rounded-[2px] bg-gold" />
               Your dedicated buying team
             </motion.p>
-            <h1 id="hero-title" className="mt-6 font-light text-[clamp(46px,7vw,108px)] tracking-[-0.045em] leading-[0.95] [text-shadow:0_2px_30px_rgba(0,0,0,.35)]">
+            <h1 id="hero-title" className="mt-5 sm:mt-6 font-light text-[clamp(44px,7vw,108px)] tracking-[-0.045em] leading-[0.95] [text-shadow:0_2px_30px_rgba(0,0,0,.35)]">
               {["From supplier", "to doorstep."].map((line, i) => (
                 <span key={line} className="block overflow-hidden pb-[0.07em]">
                   <motion.span
@@ -98,7 +98,7 @@ export default function Stage() {
               initial={reduce ? false : { y: 14 }}
               animate={{ y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease }}
-              className="mt-7 text-[#d3d8de] text-[clamp(18px,1.5vw,20px)] max-w-[34em]"
+              className="mt-5 sm:mt-7 text-[#d3d8de] text-[16.5px] leading-[1.6] sm:text-[clamp(18px,1.5vw,20px)] max-w-[34em]"
             >
               We manage sourcing, purchasing and international shipping for businesses and individuals, connecting you to
               products and suppliers across the UK, China, Europe and Africa, with delivery to wherever you are. We help
@@ -108,12 +108,12 @@ export default function Stage() {
               initial={reduce ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5, ease }}
-              className="mt-10 w-full max-w-[560px] text-left"
+              className="mt-8 sm:mt-10 w-full max-w-[560px] text-left"
             >
               <QuoteStarter id="hero-starter" />
-              <p className="mt-4 text-[14.5px] text-[#b9c0c9] flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+              <p className="mt-3 text-[14.5px] text-[#b9c0c9] flex flex-wrap items-center sm:justify-center gap-x-2">
                 Prefer to talk?
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-teal hover:text-teal-hover underline-offset-4 hover:underline py-1">
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 min-h-11 text-teal hover:text-teal-hover underline-offset-4 hover:underline">
                   <MessageCircle size={15} aria-hidden="true" /> Chat on WhatsApp
                 </a>
               </p>
@@ -143,18 +143,18 @@ export default function Stage() {
           <div className="absolute inset-0 guides text-white/[0.06]" />
         </div>
 
-      <section id="who-we-are" data-chapter="Who we are" className="relative pt-[14vh] pb-[22vh]" aria-labelledby="who-title">
+      <section id="who-we-are" data-chapter="Who we are" className="relative pt-20 pb-28 lg:pt-[14vh] lg:pb-[22vh]" aria-labelledby="who-title">
         <div className="wrap">
-          <p className="mono-label !text-[12px] text-muted-dark flex items-center gap-4 max-w-[480px]">
+          <p className="mono-label !text-[12px] text-[#c6ccd4] flex items-center gap-4 max-w-[480px]">
             <span className="text-teal">01</span> Who we are <span aria-hidden="true" className="h-px flex-1 bg-white/20" />
           </p>
           <h2 id="who-title" className="sr-only">Who we are</h2>
 
-          <div className="mt-14 lg:w-[75%]">
+          <div className="mt-10 lg:mt-14 lg:w-[75%]">
             <Statement lines={["A structured procurement", "ecosystem built on trust,", "diligence and integrity."]} />
           </div>
 
-          <div className="mt-[14vh] lg:ml-[50%] lg:w-[42%] grid gap-8">
+          <div className="mt-12 lg:mt-[14vh] lg:ml-[50%] lg:w-[42%] grid gap-6 lg:gap-8">
             <p className="text-[clamp(18px,1.5vw,21px)] text-[#c6ccd4] leading-relaxed">
               We work with individuals, small businesses, retailers, wholesalers and e-commerce businesses to source
               quality products at competitive prices from the UK, China, Europe, Africa and other global markets.
@@ -164,7 +164,7 @@ export default function Stage() {
             </div>
           </div>
 
-          <div className="mt-[16vh] lg:ml-[25%] lg:w-[60%]">
+          <div className="mt-14 lg:mt-[16vh] lg:ml-[25%] lg:w-[60%]">
             <Statement lines={["Our mission is to be", "the most dependable", "procurement partner for", "growing businesses."]} className="text-white/90" />
           </div>
         </div>

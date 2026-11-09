@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   const links = [
     ...services.map((s) => ({ href: `/services/${s.slug}`, label: s.title })),
-    { href: "/starter-kit", label: "Made in China StarterKit" },
+    { href: "/starter-kit", label: "Made in China Importation StarterKit" },
     { href: "/how-it-works", label: "How it works" },
     { href: "/contact", label: "Contact" },
   ];

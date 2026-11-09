@@ -9,6 +9,7 @@ import RouteCards from "@/components/home/RouteCards";
 import AudienceBento from "@/components/home/AudienceBento";
 import ProcessBeam from "@/components/home/ProcessBeam";
 import StarterKitBand from "@/components/StarterKitBand";
+import Reviews from "@/components/Reviews";
 import FaqList from "@/components/FaqList";
 import CtaBand from "@/components/CtaBand";
 import Reveal from "@/components/Reveal";
@@ -30,7 +31,8 @@ export default function Home() {
       <div className="cv-auto"><RouteMap after={<RouteCards />} /></div>
       <div className="cv-auto"><AudienceBento /></div>
       <div className="cv-auto"><ProcessBeam /></div>
-      <div className="cv-auto bg-white pb-[clamp(64px,8vw,112px)]">
+      <div className="cv-auto bg-paper"><Reviews /></div>
+      <div className="cv-auto bg-white py-[clamp(64px,8vw,112px)]">
         <StarterKitBand />
       </div>
       <section id="questions" data-chapter="Questions" className="section cv-auto" aria-labelledby="faq-title">

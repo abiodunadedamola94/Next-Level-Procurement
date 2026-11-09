@@ -107,7 +107,7 @@ export default function SettingsPage() {
           </ul>
           <form onSubmit={(e) => { e.preventDefault(); if (!rule.trim()) return; updateSettings({ houseRules: [...st.houseRules, rule.trim()] }); setRule(""); toast({ text: "Rule added. Every new draft is checked against it." }); }} className="py-4 flex gap-2">
             <label htmlFor="r-new" className="sr-only">New rule</label>
-            <input id="r-new" value={rule} onChange={(e) => setRule(e.target.value)} placeholder="e.g. Always mention we buy from Turkey" className={`${sel} flex-1 min-w-0`} />
+            <input id="r-new" value={rule} onChange={(e) => setRule(e.target.value)} placeholder="e.g. Always say we deliver to the UK and Nigeria" className={`${sel} flex-1 min-w-0`} />
             <button className={`${btn.ghost} !min-h-11 shrink-0`}><Plus size={16} aria-hidden="true" /> Add</button>
           </form>
         </Card>

@@ -1,5 +1,5 @@
 // Where Next Level Procurement buys. Every line rests on Dorcas's own words:
-// "the UK, China, Europe, Turkey, Africa and other global markets, from anywhere
+// "the UK, China, Europe, Africa and other global markets, from anywhere
 // in the world to anywhere", "China and EU importation to the UK, Nigeria and
 // other destinations". No transit times or prices: those are quoted per order.
 
@@ -72,23 +72,6 @@ export const routes: Route[] = [
       "Order tracking, shipping coordination and delivery support",
     ],
     quoteText: "Hello Next Level Procurement, I'd like to buy from Europe. I need: ",
-  },
-  {
-    slug: "turkey",
-    name: "Turkey",
-    title: "Buy from Turkey, delivered to you",
-    short: "Sourcing from Turkish suppliers, shipped on to you.",
-    lead: "We source products from suppliers in Turkey at competitive prices and coordinate shipping to wherever you need them.",
-    code: "TUR",
-    pin: { lat: 41.0, lng: 28.9 },
-    services: ["purchasing-and-sourcing"],
-    points: [
-      "Global product sourcing and procurement",
-      "Supplier sourcing, negotiation and management",
-      "Quality inspection",
-      "Order tracking, shipping coordination and delivery support",
-    ],
-    quoteText: "Hello Next Level Procurement, I'd like to buy from Turkey. I need: ",
   },
   {
     slug: "africa",

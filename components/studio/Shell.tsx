@@ -84,7 +84,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
       </header>
 
       <div className="border-b border-[#e3d3ad] bg-[#fbf3df] text-[#3d2f0b] text-[13.5px] px-4 md:px-8 py-2.5">
-        <strong className="font-semibold">Prototype.</strong> The three drafts are the real ones on your blog; everything else is sample data. Nothing you do here changes the website.
+        <strong className="font-semibold">Prototype.</strong> The three posts waiting here are copies of real posts, now live on your blog; everything else is sample data. Nothing you do here changes the website.
       </div>
 
       <main id="studio-main" className="px-4 md:px-8 lg:px-10 pt-6 md:pt-8 pb-[110px] md:pb-16 max-w-[1280px]">{children}</main>

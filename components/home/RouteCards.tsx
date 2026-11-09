@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { routes } from "@/lib/routes";
 
-// A carousel of the five markets: drag or swipe on touch, arrow buttons on desktop.
+// A carousel of the markets: drag or swipe on touch, arrow buttons on desktop.
 // Each card is a waybill tag: the market code in outline, the route underneath.
 export default function RouteCards({ light = false }: { light?: boolean }) {
   const track = useRef<HTMLUListElement>(null);
@@ -32,7 +32,7 @@ export default function RouteCards({ light = false }: { light?: boolean }) {
   return (
     <div className="mt-16">
       <div className="flex items-end justify-between gap-6 mb-6">
-        <p className={`mono-label !text-[12px] ${light ? "text-muted" : "text-muted-dark"}`}>Buy from · 05 markets</p>
+        <p className={`mono-label !text-[12px] ${light ? "text-muted" : "text-muted-dark"}`}>Buy from · {String(routes.length).padStart(2, "0")} markets</p>
         <div className="hidden md:flex gap-2">
           <button type="button" className={btn} onClick={() => step(-1)} disabled={edge.start} aria-label="Previous markets">
             <ArrowLeft size={18} aria-hidden="true" />

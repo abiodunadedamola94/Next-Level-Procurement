@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const ready = [
   { k: "What you need", v: "The product, and a link or photo if you have one" },
   { k: "How many", v: "One item or a bulk order" },
-  { k: "Buying from", v: "UK, China, Europe, Turkey, Africa, or not sure" },
+  { k: "Buying from", v: "UK, China, Europe, Africa, or not sure" },
   { k: "Deliver to", v: "City and country" },
   { k: "Needed by", v: "A date, if you have one" },
 ];

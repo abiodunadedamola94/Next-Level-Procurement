@@ -12,7 +12,7 @@ import { services } from "@/lib/services";
 export const metadata: Metadata = {
   title: "Our Services: Sourcing, UK Personal Shopping, Consumables | Next Level Procurement",
   description:
-    "Purchasing and sourcing from anywhere to anywhere, personal shopping from the UK for clients abroad, consumables supply, and the Made in China StarterKit.",
+    "Purchasing and sourcing from anywhere to anywhere, personal shopping from the UK for clients abroad, consumables supply, and the Made in China Importation StarterKit.",
   alternates: { canonical: "/services" },
 };
 
@@ -31,8 +31,8 @@ export default function ServicesPage() {
       />
       <PageHeader
         eyebrow="What we offer"
-        title="Three ways we buy for you"
-        lead="For businesses and individuals. And if you want to import from China yourself, our StarterKit shows you how."
+        title="Procurement solutions, tailored to your needs."
+        lead="We support businesses and individuals with purchasing, product sourcing and personal shopping from the UK and international markets. Whether you need us to manage your procurement from start to finish or want to learn how to source products from China independently, we have a solution for you."
         crumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
         aside={
           <ol className="rounded-[8px] border border-ink-line bg-ink-2 overflow-hidden">

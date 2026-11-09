@@ -13,7 +13,6 @@ const markets = [
   { code: "GB", name: "United Kingdom", what: "Personal shopping and sourcing" },
   { code: "CN", name: "China", what: "Sourcing and importation" },
   { code: "EU", name: "Europe", what: "Sourcing and importation" },
-  { code: "TR", name: "Turkey", what: "Sourcing" },
   { code: "AF", name: "Africa", what: "Sourcing" },
 ];
 
@@ -66,7 +65,7 @@ export default function RouteMapArcs({
               From anywhere in the world, to anywhere.
             </h2>
             <p className="mt-5 text-muted-dark text-[19px] max-w-[34em]">
-              We source from the UK, China, Europe, Turkey, Africa and other markets, and deliver to the UK, Nigeria and
+              We source from the UK, China, Europe, Africa and other markets, and deliver to the UK, Nigeria and
               other destinations.
             </p>
           </Reveal>

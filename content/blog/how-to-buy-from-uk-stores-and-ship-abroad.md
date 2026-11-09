@@ -3,7 +3,7 @@ title: How to buy from UK stores when you live abroad
 date: 2026-11-06
 summary: Many UK shops won't take a foreign card or ship to your country. Here is how a UK personal shopper gets round both.
 service: uk-personal-shopping
-status: draft
+status: published
 ---
 
 Lots of people outside the UK want things they can only find in UK shops. Two problems usually get in the way.

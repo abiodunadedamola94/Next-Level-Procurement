@@ -11,9 +11,9 @@ import { routes } from "@/lib/routes";
 import { WHATSAPP_LINK } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Where We Buy: UK, China, Europe, Turkey and Africa | Next Level Procurement",
+  title: "Where We Buy: UK, China, Europe and Africa | Next Level Procurement",
   description:
-    "We source and buy from the UK, China, Europe, Turkey, Africa and other global markets, and deliver to the UK, Nigeria and other destinations.",
+    "We source and buy from the UK, China, Europe, Africa and other global markets, and deliver to the UK, Nigeria and other destinations.",
   alternates: { canonical: "/routes" },
 };
 
@@ -22,8 +22,8 @@ export default function RoutesPage() {
     <>
       <PageHeader
         eyebrow="Where we buy"
-        title="Five markets. Delivered anywhere."
-        lead="We source from the UK, China, Europe, Turkey, Africa and other global markets, and deliver to the UK, Nigeria and other destinations."
+        title="Four markets. Delivered anywhere."
+        lead="We source from the UK, China, Europe, Africa and other global markets, and deliver to the UK, Nigeria and other destinations."
         crumbs={[{ label: "Home", href: "/" }, { label: "Where we buy" }]}
       >
         <PrimaryLink href="/quote">Request a quote</PrimaryLink>

@@ -402,7 +402,7 @@ function ChangesSheet({ p, open, onClose }: { p: Post; open: boolean; onClose: (
         </div>
       </fieldset>
       <label htmlFor="ch-note" className="block text-[15px] font-semibold mt-5 mb-2">Anything else? <span className="font-normal text-muted">(optional)</span></label>
-      <textarea id="ch-note" value={note} onChange={(e) => setNote(e.target.value)} rows={3} placeholder="e.g. Mention that we also buy from Turkey" className="w-full border border-line rounded-[6px] px-3 py-2.5 text-[16px] focus:outline-none focus:border-text focus:ring-4 focus:ring-teal/25" />
+      <textarea id="ch-note" value={note} onChange={(e) => setNote(e.target.value)} rows={3} placeholder="e.g. Add an example with a small order" className="w-full border border-line rounded-[6px] px-3 py-2.5 text-[16px] focus:outline-none focus:border-text focus:ring-4 focus:ring-teal/25" />
       {n > 0 && <p className="mt-3 text-[14px] text-muted">Your {n} comment{n > 1 ? "s" : ""} on the text go with it.</p>}
     </Sheet>
   );

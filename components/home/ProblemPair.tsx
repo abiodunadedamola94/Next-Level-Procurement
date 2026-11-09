@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 // Two cards side by side: what buying alone looks like, and what changes with a buying team.
 // The four challenges are hers (About text): suppliers, cost, quality, delivery.
 const rows = [
-  { topic: "Suppliers", alone: "Unknown sellers found online", with: "Trusted suppliers in the UK, China, Europe, Turkey and Africa" },
+  { topic: "Suppliers", alone: "Unknown sellers found online", with: "Trusted suppliers in the UK, China, Europe and Africa" },
   { topic: "Cost", alone: "Paying the first price you are quoted", with: "Quality products at competitive prices, negotiated for you" },
   { topic: "Quality", alone: "Hoping the goods match the photos", with: "Quality inspection before your order ships" },
   { topic: "Delivery", alone: "Arranging shipping yourself and chasing updates", with: "Order tracking, shipping coordination and delivery support" },

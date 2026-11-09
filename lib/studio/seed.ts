@@ -3,8 +3,8 @@ import path from "node:path";
 import { marked } from "marked";
 import type { Block, Post, StudioState, ActivityEvent } from "./types";
 
-// The prototype's starting data. The three drafts are read from content/blog, so they are the
-// real posts waiting on her live blog. Everything else is sample data, labelled as such in the UI.
+// The prototype's starting data. The three "waiting" posts are read from content/blog: real posts, approved and
+// published on 9 Nov 2026, kept here as the demo drafts. Everything else is sample data, labelled as such.
 
 const DIR = path.join(process.cwd(), "content", "blog");
 
@@ -152,12 +152,12 @@ export function seedState(): StudioState {
       signal: { query: "customs duty on goods from china nigeria", impressions: 870, clicks: 0, position: 31.5, note: "Searched often. You have no page on it, so you get no clicks." },
     }),
     sample({
-      id: "sample-drafting-turkey",
-      title: "Buying from Turkey: textiles and home goods",
+      id: "sample-drafting-europe",
+      title: "Buying from Europe: what to check first",
       summary: "Being written now.",
       status: "drafting",
       md: "Being written.",
-      signal: { query: "buy from turkey wholesale", impressions: 140, clicks: 1, position: 22.0, note: "Small but growing." },
+      signal: { query: "wholesale suppliers in europe", impressions: 140, clicks: 1, position: 22.0, note: "Small but growing." },
     }),
   ];
 

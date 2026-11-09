@@ -1,6 +1,6 @@
 import { themeScript } from "@/components/ThemeToggle";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { TASA_Orbiter, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { SITE_URL, SITE_NAME, MOTTO, PHONE_TEL, EMAIL } from "@/lib/site";
@@ -11,8 +11,11 @@ import SmoothScroll from "@/components/SmoothScroll";
 import SiteOnly from "@/components/SiteOnly";
 import { allPosts } from "@/lib/blog";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Body and headings: TASA Orbiter (chosen 9 Nov 2026, the face Condata uses). Labels stay in Geist Mono.
+const tasaOrbiter = TASA_Orbiter({
+  variable: "--font-tasa-orbiter",
+  // next/font has no metrics for this face yet, so it cannot build a size-matched fallback.
+  adjustFontFallback: false,
   subsets: ["latin"],
 });
 
@@ -88,7 +91,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${tasaOrbiter.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

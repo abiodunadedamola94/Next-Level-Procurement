@@ -33,7 +33,7 @@ export const audiences: Audience[] = [
   {
     slug: "retailers-and-wholesalers",
     title: "Retailers and wholesalers",
-    short: "Bulk purchasing from the UK, China, Europe, Turkey and Africa.",
+    short: "Bulk purchasing from the UK, China, Europe and Africa.",
     lead: "Buying in volume means the supplier, the price and the quality all matter more. We source in bulk and manage it from supplier to your shelves.",
     needs: ["Finding trustworthy suppliers", "Managing costs", "Maintaining product quality", "Ensuring timely delivery"],
     help: [

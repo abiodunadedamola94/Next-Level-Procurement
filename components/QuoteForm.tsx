@@ -23,7 +23,7 @@ type Fields = {
 const empty: Fields = { service: "", what: "", quantity: "", from: "", to: "", by: "", name: "", phone: "", email: "" };
 // The copy that reaches her inbox (MoCreative's site-enquiry function, Supabase). It never blocks WhatsApp.
 const ENQUIRY_URL = "https://wphdwifayyfbvgmymoia.supabase.co/functions/v1/site-enquiry";
-const sources = ["UK", "China", "Europe", "Turkey", "Africa", "Not sure"];
+const sources = ["UK", "China", "Europe", "Africa", "Not sure"];
 
 const input =
   "w-full bg-white border border-line px-4 text-[16px] text-text placeholder:text-[#6b7380] min-h-[52px] transition-[border-color,box-shadow] focus:outline-none focus:border-text focus:ring-4 focus:ring-teal/25 rounded-[4px] aria-[invalid=true]:border-[#b42318]";

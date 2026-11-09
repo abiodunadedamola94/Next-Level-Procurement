@@ -23,9 +23,9 @@ export const navMenus = (showBlog: boolean): NavMenu[] => [
       },
     ],
     feature: {
-      eyebrow: "Training · $20",
+      eyebrow: "Guide · PDF · $20",
       title: starterKit.title,
-      text: "Learn how to import from China yourself.",
+      text: "The plain-English guide to importing from China yourself.",
       href: "/starter-kit",
       cta: "See the StarterKit",
       kind: "kit",
@@ -82,7 +82,7 @@ export const navMenus = (showBlog: boolean): NavMenu[] => [
       {
         title: "Learn",
         items: [
-          { label: "Made in China StarterKit", href: "/starter-kit", desc: "Our $20 training on importing from China." },
+          { label: "Made in China Importation StarterKit", href: "/starter-kit", desc: "Our $20 PDF guide to importing from China." },
           ...(showBlog ? [{ label: "Guides", href: "/blog", desc: "Sourcing and importing, explained simply." }] : []),
         ],
       },
@@ -105,6 +105,7 @@ export const navMenus = (showBlog: boolean): NavMenu[] => [
         items: [
           { label: "About us", href: "/about", desc: "Who we are and how we work." },
           { label: "Our values", href: "/about#values", desc: "Trust, diligence and integrity." },
+          { label: "Reviews", href: "/reviews", desc: "What customers say, from Trustpilot." },
           { label: "Contact", href: "/contact", desc: "WhatsApp, phone and email." },
         ],
       },

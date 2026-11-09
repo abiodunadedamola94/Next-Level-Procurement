@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/about`, lastModified: now, priority: 0.7 },
     { url: `${SITE_URL}/quote`, lastModified: now, priority: 0.8 },
     { url: `${SITE_URL}/contact`, lastModified: now, priority: 0.6 },
+    { url: `${SITE_URL}/reviews`, lastModified: now, priority: 0.5 },
     { url: `${SITE_URL}/privacy`, lastModified: now, priority: 0.2 },
   ];
   if (allPosts().length) pages.push({ url: `${SITE_URL}/blog`, lastModified: now, priority: 0.6 });

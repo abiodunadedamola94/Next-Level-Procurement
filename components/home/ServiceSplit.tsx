@@ -138,9 +138,12 @@ export default function ServiceSplit() {
       <div className="wrap">
         <div className="max-w-[760px] mb-8 lg:mb-14">
           <p className="mono-label !text-[12px] text-muted flex items-center gap-4">
-            <span className="text-teal-text">03</span> Services
+            <span className="text-teal-text">03</span> What we offer
           </p>
-          <h2 id="services-title" className="mt-6 text-[clamp(36px,4.6vw,64px)]">Three ways we buy for you.</h2>
+          <h2 id="services-title" className="mt-6 text-[clamp(36px,4.6vw,64px)]">Procurement solutions, tailored to your needs.</h2>
+          <p className="mt-6 text-muted text-[18px] max-w-[38em]">
+            We support businesses and individuals with purchasing, product sourcing and personal shopping from the UK and international markets. Whether you need us to manage your procurement from start to finish or want to learn how to source products from China independently, we have a solution for you.
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-20">

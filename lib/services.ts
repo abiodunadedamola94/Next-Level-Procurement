@@ -15,7 +15,7 @@ export type Service = {
   ctaLabel: string;
 };
 
-export const SOURCE_MARKETS = ["the UK", "China", "Europe", "Turkey", "Africa"];
+export const SOURCE_MARKETS = ["the UK", "China", "Europe", "Africa"];
 
 export const services: Service[] = [
   {
@@ -25,9 +25,9 @@ export const services: Service[] = [
       "From anywhere in the world to anywhere, including importation from China.",
     seoTitle: "Purchasing, Sourcing and China Importation | Next Level Procurement",
     seoDescription:
-      "We source quality products at competitive prices from the UK, China, Europe, Turkey, Africa and other markets, and manage the process from sourcing to delivery.",
+      "We source quality products at competitive prices from the UK, China, Europe, Africa and other markets, and manage the process from sourcing to delivery.",
     intro: [
-      "We source quality products at competitive prices from the UK, China, Europe, Turkey, Africa and other global markets, from anywhere in the world to anywhere.",
+      "We source quality products at competitive prices from the UK, China, Europe, Africa and other global markets, from anywhere in the world to anywhere.",
       "Whether you need reliable suppliers for your business, bulk product sourcing or international importation, we help you find the right products and manage the process from sourcing to delivery.",
     ],
     whoFor: [
@@ -55,9 +55,9 @@ export const services: Service[] = [
       "For clients abroad who want to buy from the UK and have it sent to their country.",
     seoTitle: "Personal Shopping from the UK, Shipped to You | Next Level Procurement",
     seoDescription:
-      "Live outside the UK and want to buy from UK stores? We buy for you in the UK and send it to your country, from one item to many.",
+      "Based outside the UK and want to shop from UK stores or retailers? We purchase on your behalf and arrange delivery directly to your country.",
     intro: [
-      "If you live outside the UK and want to buy from UK stores, we buy for you and send it to your country.",
+      "Based outside the UK and want to shop from UK stores or retailers? We purchase on your behalf and arrange delivery directly to your country.",
       "Whether you are buying one item for personal use or many, we handle the purchase, shipping coordination and delivery support.",
     ],
     whoFor: [
@@ -81,7 +81,7 @@ export const services: Service[] = [
     seoDescription:
       "We supply businesses and individuals with basic consumables like bin bags, microfibre cloths, disposable gloves and disposable napkins.",
     intro: [
-      "We supply businesses and individuals with the basic consumables they use every day.",
+      "We provide businesses and individuals with a reliable supply of everyday essential consumables to support their daily operations and needs.",
     ],
     whoFor: ["Businesses", "Individuals"],
     includes: [
@@ -99,44 +99,36 @@ export const services: Service[] = [
 export const getService = (slug: string) =>
   services.find((s) => s.slug === slug);
 
+// The StarterKit as sold on Payhip (https://payhip.com/b/8OPgJ, read 9 Nov 2026). Name, price, format and
+// contents are copied from that page, so the site and the shop agree. If she changes the Payhip page,
+// change this too.
 export const starterKit = {
-  title: "Made in China StarterKit",
+  title: "Made in China Importation StarterKit",
   price: "$20",
   priceValue: "20",
   currency: "USD",
-  short: "Training on how to import from China.",
-  seoTitle: "Made in China StarterKit: Learn to Import from China | Next Level Procurement",
+  format: "39-page PDF, instant download",
+  author: "Written by Dorcas Kareem, founder of Next Level Procurement",
+  short: "The plain-English guide to sourcing, paying, shipping and clearing goods from China.",
+  pitch: "Want to source from China yourself? Our Made in China Importation StarterKit provides practical, step-by-step guidance to help you get started.",
+  seoTitle: "Made in China Importation StarterKit: Learn to Import from China | Next Level Procurement",
   seoDescription:
-    "The Made in China StarterKit is our training on how to import from China. $20. See what you will learn before you buy.",
-  // The course outline shown on /starter-kit. "proposed" = drafted by MoCreative from what a first import
-  // from China involves, shown with a label until Next Level Procurement confirms or edits the lesson list.
-  // When she confirms: edit the modules to match her course and set outlineStatus to "confirmed".
-  outlineStatus: "proposed" as "proposed" | "confirmed",
-  outcome: "By the end you should be able to find a supplier in China, check them before you pay, and get your first order shipped and cleared to you.",
-  modules: [
-    {
-      title: "Is importing from China right for you?",
-      lessons: ["What sells well when bought from China", "Minimum order quantities and how to start small", "Working out the full cost before you buy: product, shipping, duty"],
-    },
-    {
-      title: "Finding suppliers",
-      lessons: ["Where suppliers are listed and how to search them", "Reading a product listing and a price list", "Manufacturers, traders and agents: who you are talking to"],
-    },
-    {
-      title: "Checking a supplier before you pay",
-      lessons: ["The questions to ask first", "Warning signs of a supplier to avoid", "Ordering and judging samples"],
-    },
-    {
-      title: "Paying safely",
-      lessons: ["Common payment methods and their risks", "Deposits, balances and what to agree in writing", "Avoiding the usual scams"],
-    },
-    {
-      title: "Shipping and customs",
-      lessons: ["Air or sea: cost, speed and when to use each", "Freight forwarders and shared containers", "Customs clearance and duty where you live"],
-    },
-    {
-      title: "Receiving and reordering",
-      lessons: ["Checking the goods when they arrive", "What to do when an order is wrong", "Building a supplier you can reorder from"],
-    },
+    "The plain-English guide to sourcing, paying, shipping and clearing goods from China. A 39-page PDF for $20, by Next Level Procurement.",
+  intro:
+    "China can be one of the best places to source products, but a cheap unit price does not automatically mean a profitable purchase. This starter kit shows you how to find the right suppliers, protect your payment, check quality and bring the goods home at a landed cost you have worked out in advance.",
+  contents: [
+    "Where to source: Alibaba, 1688, Pinduoduo, Taobao and more than ten other sites and markets",
+    "How to order from China, step by step",
+    "WeChat explained, and why you never pay a supplier on chat",
+    "Alipay: how to connect it, pay on 1688 from the UK and get yuan",
+    "1688 ordering, including how to enter your shipping address field by field",
+    "Sea, air, rail and express compared, with typical costs",
+    "Shipping fee, volumetric weight and CBM calculators with worked examples",
+    "UK customs: EORI, commodity codes, duty, VAT and a full landed-cost example",
+    "Refunds and complaints on 1688, with the Chinese words you will see on screen",
+    "50 shipping companies to know and a 10-point supplier check",
+    "Starter supplier contacts, scorecards, checklists and a glossary",
   ],
+  whoFor: "Beginners, online sellers, boutiques, small businesses and anyone who wants to import without learning it the expensive way.",
+  notFor: "Anyone looking for a guaranteed profit, legal or tax advice, or a list of suppliers that never changes.",
 };

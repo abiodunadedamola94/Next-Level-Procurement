@@ -7,7 +7,7 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Which countries do you buy from?",
-    a: "The UK, China, Europe, Turkey, Africa and other global markets. If you are not sure where to buy something, tell us what you need and we will find it.",
+    a: "The UK, China, Europe, Africa and other global markets. If you are not sure where to buy something, tell us what you need and we will find it.",
   },
   {
     q: "Where can you deliver?",
@@ -31,6 +31,6 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Can I learn to import from China myself?",
-    a: "Yes. The Made in China StarterKit is our training on how to import from China. It costs $20.",
+    a: "Yes. The Made in China Importation StarterKit is our 39-page PDF guide to sourcing, paying, shipping and clearing goods from China. It costs $20 and downloads instantly.",
   },
 ];

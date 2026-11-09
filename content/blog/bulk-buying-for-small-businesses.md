@@ -3,7 +3,7 @@ title: Bulk buying for small businesses: what to check first
 date: 2026-11-06
 summary: Buying in bulk can lower your costs. Here is what to check before you place a large order.
 service: purchasing-and-sourcing
-status: draft
+status: published
 ---
 
 Buying in larger quantities usually lowers the price of each item. A large order also ties up more money, so check a few things first.

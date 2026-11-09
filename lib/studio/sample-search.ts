@@ -11,7 +11,7 @@ export const sampleQueries: QueryRow[] = [
   { query: "made in china starter kit", clicks: 7, impressions: 95, position: 3.1, page: "/starter-kit" },
   { query: "how to pay chinese suppliers safely", clicks: 0, impressions: 520, position: 27.4 },
   { query: "personal shopper london to lagos", clicks: 1, impressions: 330, position: 16.9 },
-  { query: "buy from turkey wholesale", clicks: 1, impressions: 140, position: 22.0 },
+  { query: "wholesale suppliers in europe", clicks: 1, impressions: 140, position: 22.0 },
 ];
 
 export const sampleTrend = [38, 42, 35, 51, 47, 58, 62, 55, 66, 71, 64, 79]; // weekly clicks, 12 weeks

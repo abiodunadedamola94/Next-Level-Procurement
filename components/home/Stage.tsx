@@ -7,16 +7,13 @@ import { MessageCircle } from "lucide-react";
 
 import Cinematic from "@/components/Cinematic";
 import HeroReel from "@/components/home/HeroReel";
-import dynamic from "next/dynamic";
+import DemoVideo from "@/components/home/DemoVideo";
 import QuoteStarter from "@/components/QuoteStarter";
 import { LineLink } from "@/components/Buttons";
 import { WHATSAPP_LINK } from "@/lib/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-// The demo is the heaviest part of the page. Its code loads in its own chunk, so the hero can paint
-// and respond first; the server still renders its HTML, so nothing jumps.
-const EngineDemo = dynamic(() => import("@/components/home/EngineDemo"));
 
 function Statement({ lines, className = "" }: { lines: string[]; className?: string }) {
   const reduce = useReducedMotion();
@@ -46,7 +43,7 @@ function Statement({ lines, className = "" }: { lines: string[]; className?: str
 
 // The opening stage, top to bottom (pattern from Flexport's hero; nothing of theirs copied):
 // a moving background of sea, air and road; the promise and the first quote question centred on it;
-// then a clickable picture of how working with us goes, overlapping the bottom of the scene.
+// then the product film, overlapping the bottom of the scene.
 // Below it, the "who we are" statements pass over a fixed still.
 export default function Stage() {
   const hero = useRef<HTMLDivElement>(null);
@@ -103,8 +100,9 @@ export default function Stage() {
               transition={{ duration: 0.8, delay: 0.4, ease }}
               className="mt-7 text-[#d3d8de] text-[clamp(18px,1.5vw,20px)] max-w-[34em]"
             >
-              We source, buy and ship for businesses and individuals, from the UK, China, Europe, Turkey and Africa to
-              wherever you are. You save time and money and get on with running your business.
+              We manage sourcing, purchasing and international shipping for businesses and individuals, connecting you to
+              products and suppliers across the UK, China, Europe and Africa, with delivery to wherever you are. We help
+              you save time, reduce costs and focus on what matters most.
             </motion.p>
             <motion.div
               initial={reduce ? false : { opacity: 0, y: 14 }}
@@ -123,15 +121,14 @@ export default function Stage() {
           </motion.div>
         </div>
 
-        {/* The demo, overlapping the bottom of the scene */}
+        {/* The product film, overlapping the bottom of the scene */}
         <motion.div
           initial={reduce ? false : { opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, delay: 0.6, ease }}
           className="relative z-10 wrap -mt-[80px] lg:-mt-[180px] pb-16 lg:pb-24"
         >
-          <h2 className="sr-only">How working with us goes: a clickable demo</h2>
-          <EngineDemo />
+          <DemoVideo />
         </motion.div>
       </section>
 
@@ -160,7 +157,7 @@ export default function Stage() {
           <div className="mt-[14vh] lg:ml-[50%] lg:w-[42%] grid gap-8">
             <p className="text-[clamp(18px,1.5vw,21px)] text-[#c6ccd4] leading-relaxed">
               We work with individuals, small businesses, retailers, wholesalers and e-commerce businesses to source
-              quality products at competitive prices from the UK, China, Europe, Turkey, Africa and other global markets.
+              quality products at competitive prices from the UK, China, Europe, Africa and other global markets.
             </p>
             <div>
               <LineLink href="/about" dark>About us</LineLink>

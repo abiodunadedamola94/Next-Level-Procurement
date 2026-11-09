@@ -46,7 +46,7 @@ export default function AboutPage() {
             <Reveal className="space-y-6 text-[18px] text-muted">
               <p>
                 We work with individuals, small businesses, retailers, wholesalers and e-commerce businesses to source
-                quality products at competitive prices from the UK, China, Europe, Turkey, Africa and other global markets.
+                quality products at competitive prices from the UK, China, Europe, Africa and other global markets.
               </p>
               <p>
                 Whether you need personal shopping from the UK to your country, reliable suppliers for your business, bulk

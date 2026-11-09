@@ -17,8 +17,6 @@ export const QUOTE_LINK = waLink(
   "Hello Next Level Procurement, I'd like a quote. I need: "
 );
 
-// The Made in China StarterKit ($20). Until the sales link is added,
-// the button opens WhatsApp with a ready message.
-export const STARTERKIT_URL: string | null = null;
-export const STARTERKIT_LINK =
-  STARTERKIT_URL ?? waLink("Hello, I'd like the Made in China StarterKit ($20).");
+// The Made in China Importation StarterKit ($20), sold on Payhip.
+export const STARTERKIT_URL = "https://payhip.com/b/8OPgJ";
+export const STARTERKIT_LINK = STARTERKIT_URL;

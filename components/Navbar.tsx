@@ -169,7 +169,7 @@ const Navbar = ({ showBlog = false }: { showBlog?: boolean }) => {
           <div className="wrap h-9 flex items-center justify-between mono-label !text-[11px] text-muted-dark">
             <p className="flex items-center gap-2">
               <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-teal shadow-[0_0_0_3px_rgba(44,186,172,.2)]" />
-              Buying from the UK, China, Europe, Turkey and Africa
+              Buying from the UK, China, Europe and Africa
             </p>
             <div className="flex items-center gap-5">
               <a href={`tel:${PHONE_TEL}`} className="flex items-center gap-1.5 hover:text-white transition-colors py-2">

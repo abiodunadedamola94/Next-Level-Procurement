@@ -6,7 +6,7 @@
    Contrast rules: teal #2CBAAC only on ink; on paper use teal-text #0F6B63. */
 
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-tasa-orbiter), "TASA Orbiter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   --color-ink: #121317;
@@ -137,6 +137,9 @@
 .cine:not([data-playing]) :is(.kenburns, .drift, .drift-slow) { animation-play-state: paused; }
 .cine[data-playing] :is(.kenburns, .drift, .drift-slow) { will-change: transform; }
 .marquee { animation: marquee 40s linear infinite; }
+/* The lines behind the film card (components/home/DemoVideo.tsx): a slow dash that travels along each curve. */
+@keyframes film-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -1600; } }
+.film-line { stroke-dasharray: 900 700; animation: film-flow 16s linear infinite; }
 .grain { background-image: url("data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%27160%27 height=%27160%27><filter id=%27n%27><feTurbulence type=%27fractalNoise%27 baseFrequency=%270.9%27 numOctaves=%272%27 stitchTiles=%27stitch%27/></filter><rect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27 opacity=%270.5%27/></svg>"); }
 
 /* Lenis smooth scroll */

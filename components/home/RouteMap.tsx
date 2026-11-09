@@ -2,7 +2,7 @@ import DottedMap from "dotted-map";
 import RouteMapArcs, { type Place, type Arc } from "./RouteMapArcs";
 
 // Built once at build time: a dotted map cropped to the markets she buys from
-// (UK, China, Europe, Turkey, Africa) and where orders go (UK, Nigeria, elsewhere).
+// (UK, China, Europe, Africa) and where orders go (UK, Nigeria, elsewhere).
 const map = new DottedMap({
   height: 64,
   grid: "diagonal",
@@ -25,7 +25,6 @@ const at = (lat: number, lng: number) => {
 const places: Place[] = [
   { id: "uk", label: "London, UK", kind: "both", ...at(51.5, -0.12) },
   { id: "eu", label: "Europe", kind: "source", ...at(50.1, 8.7) },
-  { id: "tr", label: "Istanbul, Turkey", kind: "source", ...at(41.0, 28.97) },
   { id: "cn", label: "Guangzhou, China", kind: "source", ...at(23.1, 113.3) },
   { id: "af", label: "Nairobi, Africa", kind: "source", ...at(-1.29, 36.8) },
   { id: "ng", label: "Lagos, Nigeria", kind: "dest", ...at(6.5, 3.4) },
@@ -34,7 +33,6 @@ const places: Place[] = [
 const arcs: Arc[] = [
   { from: "cn", to: "ng" },
   { from: "uk", to: "ng" },
-  { from: "tr", to: "ng" },
   { from: "cn", to: "uk" },
   { from: "eu", to: "ng" },
   { from: "af", to: "uk" },

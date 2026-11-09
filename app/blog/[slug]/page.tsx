@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = getPost(slug);
   if (!p) return {};
-  const title = `${p.title} | ${SITE_NAME}`;
+  const title = `${p.title} | ${SITE_NAME}`.length <= 65 ? `${p.title} | ${SITE_NAME}` : p.title;
   return {
     title,
     description: p.summary,

@@ -10,9 +10,9 @@ import { SITE_URL } from "@/lib/site";
 import { services } from "@/lib/services";
 
 export const metadata: Metadata = {
-  title: "Our Services: Sourcing, UK Personal Shopping, Consumables | Next Level Procurement",
+  title: "Sourcing and Personal Shopping Services | Next Level Procurement",
   description:
-    "Purchasing and sourcing from anywhere to anywhere, personal shopping from the UK for clients abroad, consumables supply, and the Made in China Importation StarterKit.",
+    "Sourcing and purchasing from anywhere to anywhere, UK personal shopping for clients abroad, consumables supply, and our China importation StarterKit.",
   alternates: { canonical: "/services" },
 };
 

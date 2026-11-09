@@ -23,7 +23,7 @@ export const services: Service[] = [
     title: "Purchasing and Sourcing",
     short:
       "From anywhere in the world to anywhere, including importation from China.",
-    seoTitle: "Purchasing, Sourcing and China Importation | Next Level Procurement",
+    seoTitle: "Sourcing and China Importation | Next Level Procurement",
     seoDescription:
       "We source quality products at competitive prices from the UK, China, Europe, Africa and other markets, and manage the process from sourcing to delivery.",
     intro: [
@@ -53,7 +53,7 @@ export const services: Service[] = [
     title: "Personal Shopping from the UK",
     short:
       "For clients abroad who want to buy from the UK and have it sent to their country.",
-    seoTitle: "Personal Shopping from the UK, Shipped to You | Next Level Procurement",
+    seoTitle: "UK Personal Shopping, Shipped to You | Next Level Procurement",
     seoDescription:
       "Based outside the UK and want to shop from UK stores or retailers? We purchase on your behalf and arrange delivery directly to your country.",
     intro: [
@@ -77,7 +77,7 @@ export const services: Service[] = [
     slug: "consumables-supply",
     title: "Consumables Supply",
     short: "Basic consumables for businesses and individuals.",
-    seoTitle: "Consumables Supply: Bin Bags, Gloves, Microfibre Cloths | Next Level Procurement",
+    seoTitle: "Consumables: Gloves, Bin Bags, Cloths | Next Level Procurement",
     seoDescription:
       "We supply businesses and individuals with basic consumables like bin bags, microfibre cloths, disposable gloves and disposable napkins.",
     intro: [
@@ -111,7 +111,7 @@ export const starterKit = {
   author: "Written by Dorcas Kareem, founder of Next Level Procurement",
   short: "The plain-English guide to sourcing, paying, shipping and clearing goods from China.",
   pitch: "Want to source from China yourself? Our Made in China Importation StarterKit provides practical, step-by-step guidance to help you get started.",
-  seoTitle: "Made in China Importation StarterKit: Learn to Import from China | Next Level Procurement",
+  seoTitle: "Made in China Importation StarterKit | Next Level Procurement",
   seoDescription:
     "The plain-English guide to sourcing, paying, shipping and clearing goods from China. A 39-page PDF for $20, by Next Level Procurement.",
   intro:

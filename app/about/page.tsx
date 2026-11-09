@@ -10,7 +10,7 @@ import { MOTTO } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About Us | Next Level Procurement",
   description:
-    "We make sourcing, purchasing and importing goods simple, reliable and stress-free, for individuals, small businesses, retailers, wholesalers and e-commerce businesses.",
+    "We make sourcing, purchasing and importing simple, reliable and stress-free for individuals, small businesses, retailers, wholesalers and online sellers.",
   alternates: { canonical: "/about" },
 };
 

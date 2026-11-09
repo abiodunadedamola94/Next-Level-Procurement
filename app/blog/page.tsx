@@ -10,7 +10,7 @@ import DraftTag from "@/components/DraftTag";
 import { getService } from "@/lib/services";
 
 export const metadata: Metadata = {
-  title: "Blog: Sourcing, Importing and Buying from the UK | Next Level Procurement",
+  title: "Blog: Sourcing and Importing Guides | Next Level Procurement",
   description:
     "Practical guides on sourcing products, importing from China and buying from the UK, from the Next Level Procurement team.",
   alternates: { canonical: "/blog" },

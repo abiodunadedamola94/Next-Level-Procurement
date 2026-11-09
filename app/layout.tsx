@@ -26,7 +26,7 @@ const geistMono = Geist_Mono({
 
 const TITLE = "Next Level Procurement | Sourcing and UK Personal Shopping";
 const DESCRIPTION =
-  "Your dedicated buying team. Purchasing and sourcing from anywhere to anywhere, including China importation; personal shopping from the UK for clients abroad; and consumables supply for businesses and individuals.";
+  "Your dedicated buying team: sourcing and purchasing from the UK, China, Europe and Africa, UK personal shopping for clients abroad, and consumables supply.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
